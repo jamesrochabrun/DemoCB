@@ -10,12 +10,16 @@
 #import "CBCoredataStack.h"
 #import "CBTeamMember.h"
 #import "CustomToolbar.h"
+#import "UICollectionView+Addition.h"
+#import "Common.h"
 
 
-@interface TeamFeedViewController ()
+@interface TeamFeedViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong) UILabel *label;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) CustomToolbar *toolBar;
+@property (nonatomic, strong) UICollectionView *gridCollectionView;
+
 
 @end
 
@@ -29,6 +33,9 @@
     [_toolBar.coffeeButton setSelected:YES];
     [self.view addSubview:_toolBar];
     
+    _gridCollectionView = [UICollectionView collectionViewInView:self.view direction:UICollectionViewScrollDirectionVertical withItemSize:self.view.frame.size delegate:self];
+    [_gridCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    
     
     CBCoredataStack *coreDataStack = [CBCoredataStack defaultStack];
     CBTeamMember *tm = [NSEntityDescription insertNewObjectForEntityForName:@"CBTeamMember" inManagedObjectContext:coreDataStack.managedObjectContext];
@@ -40,6 +47,17 @@
     [coreDataStack saveContext];
     
     [self fetch];
+}
+
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    
+    CGRect frame = _gridCollectionView.frame;
+    frame.size.height = height(self.view) - height(_toolBar);
+    frame.size.width = width(self.view);
+    frame.origin.x = 0;
+    frame.origin.y = 0;
+    _gridCollectionView.frame = frame;
 }
 
 
@@ -60,8 +78,17 @@
     //_fetchedResultsController.delegate = self;
     
     [self.fetchedResultsController performFetch:nil];
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 15;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor blueColor];
+    return cell;
 }
 
 - (void)didReceiveMemoryWarning {
