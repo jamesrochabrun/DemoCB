@@ -9,11 +9,13 @@
 #import "TeamFeedViewController.h"
 #import "CBCoredataStack.h"
 #import "CBTeamMember.h"
+#import "CustomToolbar.h"
 
 
 @interface TeamFeedViewController ()
 @property (nonatomic, strong) UILabel *label;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, strong) CustomToolbar *toolBar;
 
 @end
 
@@ -23,6 +25,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
    // self.view.backgroundColor = [UIColor redColor];
+    _toolBar = [CustomToolbar new];
+    [_toolBar.coffeeButton setSelected:YES];
+    [self.view addSubview:_toolBar];
+    
+    
     CBCoredataStack *coreDataStack = [CBCoredataStack defaultStack];
     CBTeamMember *tm = [NSEntityDescription insertNewObjectForEntityForName:@"CBTeamMember" inManagedObjectContext:coreDataStack.managedObjectContext];
     tm.firstName = @"carlos";
@@ -53,14 +60,6 @@
     //_fetchedResultsController.delegate = self;
     
     [self.fetchedResultsController performFetch:nil];
-    
-    _label = [[UILabel alloc] initWithFrame:CGRectMake(100, 100, 200, 50)];
-
- 
-//    _label.text = tm.firstName;
-    
-    _label.backgroundColor = [UIColor greenColor];
-    [self.view addSubview:_label];
     
     
 }

@@ -26,6 +26,7 @@
 		7B8C03DC1DDE30F00089FDC8 /* team.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B8C03DB1DDE30F00089FDC8 /* team.json */; };
 		7B8C03E01DDE38D50089FDC8 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C03DF1DDE38D50089FDC8 /* Common.m */; };
 		7B8C03E41DDE3BA80089FDC8 /* CommonUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C03E31DDE3BA80089FDC8 /* CommonUI.m */; };
+		7B8C03E71DDE3D0B0089FDC8 /* CustomToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C03E61DDE3D0B0089FDC8 /* CustomToolbar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,8 @@
 		7B8C03DF1DDE38D50089FDC8 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
 		7B8C03E21DDE3BA80089FDC8 /* CommonUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUI.h; sourceTree = "<group>"; };
 		7B8C03E31DDE3BA80089FDC8 /* CommonUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUI.m; sourceTree = "<group>"; };
+		7B8C03E51DDE3D0B0089FDC8 /* CustomToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomToolbar.h; sourceTree = "<group>"; };
+		7B8C03E61DDE3D0B0089FDC8 /* CustomToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomToolbar.m; sourceTree = "<group>"; };
 		8DFD118E0F3CD8B729B2EA8E /* Pods-CoffeeMeetsBagelUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeeMeetsBagelUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoffeeMeetsBagelUITests/Pods-CoffeeMeetsBagelUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B2FE943B319F2926D98313FE /* libPods-CoffeeMeetsBagelTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CoffeeMeetsBagelTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE17BAB717A7AA6E3B953286 /* libPods-CoffeeMeetsBagelUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CoffeeMeetsBagelUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,6 +197,8 @@
 		7B3275571DDE0C7A00B9AC22 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7B8C03E51DDE3D0B0089FDC8 /* CustomToolbar.h */,
+				7B8C03E61DDE3D0B0089FDC8 /* CustomToolbar.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -234,9 +239,9 @@
 		7B8C03DD1DDE38A00089FDC8 /* CommonTools */ = {
 			isa = PBXGroup;
 			children = (
-				7B8C03DE1DDE38D50089FDC8 /* Common.h */,
 				7B8C03E21DDE3BA80089FDC8 /* CommonUI.h */,
 				7B8C03E31DDE3BA80089FDC8 /* CommonUI.m */,
+				7B8C03DE1DDE38D50089FDC8 /* Common.h */,
 				7B8C03DF1DDE38D50089FDC8 /* Common.m */,
 			);
 			name = CommonTools;
@@ -525,6 +530,7 @@
 			files = (
 				7B3275701DDE2BD500B9AC22 /* CoffeeMeetsBagel.xcdatamodeld in Sources */,
 				7B32751F1DDE0B3A00B9AC22 /* AppDelegate.m in Sources */,
+				7B8C03E71DDE3D0B0089FDC8 /* CustomToolbar.m in Sources */,
 				7B32756F1DDE295C00B9AC22 /* CBTeamMember+CoreDataProperties.m in Sources */,
 				7B32755F1DDE0D7200B9AC22 /* CBCoredataStack.m in Sources */,
 				7B8C03E01DDE38D50089FDC8 /* Common.m in Sources */,

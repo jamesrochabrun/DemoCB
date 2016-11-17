@@ -23,3 +23,6 @@ green:(255&(rgbValue >> 8))/255.0f \
 blue:(255&rgbValue)/255.0f \
 alpha:alphaValue]
 #define IS_IPHONE4  ( [UIScreen  mainScreen].bounds.size.height <= 480)
+
+static CGFloat kGeomToolBarButtonSize = 40.0;
+static CGFloat kGeomHeightToolBar = 49.0;
