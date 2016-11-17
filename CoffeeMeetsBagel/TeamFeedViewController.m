@@ -10,6 +10,7 @@
 #import "CBCoredataStack.h"
 #import "CBTeamMember.h"
 
+
 @interface TeamFeedViewController ()
 @property (nonatomic, strong) UILabel *label;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
