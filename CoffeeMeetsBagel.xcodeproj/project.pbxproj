@@ -1,0 +1,618 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7B32751C1DDE0B3A00B9AC22 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B32751B1DDE0B3A00B9AC22 /* main.m */; };
+		7B32751F1DDE0B3A00B9AC22 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B32751E1DDE0B3A00B9AC22 /* AppDelegate.m */; };
+		7B3275251DDE0B3A00B9AC22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B3275231DDE0B3A00B9AC22 /* Main.storyboard */; };
+		7B32752A1DDE0B3A00B9AC22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B3275291DDE0B3A00B9AC22 /* Assets.xcassets */; };
+		7B32752D1DDE0B3A00B9AC22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B32752B1DDE0B3A00B9AC22 /* LaunchScreen.storyboard */; };
+		7B3275381DDE0B3A00B9AC22 /* CoffeeMeetsBagelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3275371DDE0B3A00B9AC22 /* CoffeeMeetsBagelTests.m */; };
+		7B3275431DDE0B3A00B9AC22 /* CoffeeMeetsBagelUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3275421DDE0B3A00B9AC22 /* CoffeeMeetsBagelUITests.m */; };
+		7B32755C1DDE0D4C00B9AC22 /* TeamFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B32755B1DDE0D4C00B9AC22 /* TeamFeedViewController.m */; };
+		7B32755F1DDE0D7200B9AC22 /* CBCoredataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B32755E1DDE0D7200B9AC22 /* CBCoredataStack.m */; };
+		7B3275621DDE102900B9AC22 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B3275611DDE102900B9AC22 /* CoreData.framework */; };
+		7B32756E1DDE295C00B9AC22 /* CBTeamMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B32756B1DDE295C00B9AC22 /* CBTeamMember.m */; };
+		7B32756F1DDE295C00B9AC22 /* CBTeamMember+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B32756D1DDE295C00B9AC22 /* CBTeamMember+CoreDataProperties.m */; };
+		7B3275701DDE2BD500B9AC22 /* CoffeeMeetsBagel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7B3275261DDE0B3A00B9AC22 /* CoffeeMeetsBagel.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7B3275341DDE0B3A00B9AC22 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7B32750F1DDE0B3A00B9AC22 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7B3275161DDE0B3A00B9AC22;
+			remoteInfo = CoffeeMeetsBagel;
+		};
+		7B32753F1DDE0B3A00B9AC22 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7B32750F1DDE0B3A00B9AC22 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7B3275161DDE0B3A00B9AC22;
+			remoteInfo = CoffeeMeetsBagel;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7B3275171DDE0B3A00B9AC22 /* CoffeeMeetsBagel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeMeetsBagel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B32751B1DDE0B3A00B9AC22 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7B32751D1DDE0B3A00B9AC22 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7B32751E1DDE0B3A00B9AC22 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7B3275241DDE0B3A00B9AC22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7B3275271DDE0B3A00B9AC22 /* CoffeeMeetsBagel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoffeeMeetsBagel.xcdatamodel; sourceTree = "<group>"; };
+		7B3275291DDE0B3A00B9AC22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7B32752C1DDE0B3A00B9AC22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7B32752E1DDE0B3A00B9AC22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B3275331DDE0B3A00B9AC22 /* CoffeeMeetsBagelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoffeeMeetsBagelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B3275371DDE0B3A00B9AC22 /* CoffeeMeetsBagelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoffeeMeetsBagelTests.m; sourceTree = "<group>"; };
+		7B3275391DDE0B3A00B9AC22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B32753E1DDE0B3A00B9AC22 /* CoffeeMeetsBagelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoffeeMeetsBagelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B3275421DDE0B3A00B9AC22 /* CoffeeMeetsBagelUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoffeeMeetsBagelUITests.m; sourceTree = "<group>"; };
+		7B3275441DDE0B3A00B9AC22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B32755A1DDE0D4C00B9AC22 /* TeamFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamFeedViewController.h; sourceTree = "<group>"; };
+		7B32755B1DDE0D4C00B9AC22 /* TeamFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamFeedViewController.m; sourceTree = "<group>"; };
+		7B32755D1DDE0D7200B9AC22 /* CBCoredataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBCoredataStack.h; sourceTree = "<group>"; };
+		7B32755E1DDE0D7200B9AC22 /* CBCoredataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBCoredataStack.m; sourceTree = "<group>"; };
+		7B3275611DDE102900B9AC22 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		7B32756A1DDE295C00B9AC22 /* CBTeamMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTeamMember.h; sourceTree = "<group>"; };
+		7B32756B1DDE295C00B9AC22 /* CBTeamMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTeamMember.m; sourceTree = "<group>"; };
+		7B32756C1DDE295C00B9AC22 /* CBTeamMember+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBTeamMember+CoreDataProperties.h"; sourceTree = "<group>"; };
+		7B32756D1DDE295C00B9AC22 /* CBTeamMember+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBTeamMember+CoreDataProperties.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7B3275141DDE0B3A00B9AC22 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B3275621DDE102900B9AC22 /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B3275301DDE0B3A00B9AC22 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B32753B1DDE0B3A00B9AC22 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7B32750E1DDE0B3A00B9AC22 = {
+			isa = PBXGroup;
+			children = (
+				7B3275191DDE0B3A00B9AC22 /* CoffeeMeetsBagel */,
+				7B3275361DDE0B3A00B9AC22 /* CoffeeMeetsBagelTests */,
+				7B3275411DDE0B3A00B9AC22 /* CoffeeMeetsBagelUITests */,
+				7B3275181DDE0B3A00B9AC22 /* Products */,
+				7B3275601DDE102800B9AC22 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7B3275181DDE0B3A00B9AC22 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7B3275171DDE0B3A00B9AC22 /* CoffeeMeetsBagel.app */,
+				7B3275331DDE0B3A00B9AC22 /* CoffeeMeetsBagelTests.xctest */,
+				7B32753E1DDE0B3A00B9AC22 /* CoffeeMeetsBagelUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7B3275191DDE0B3A00B9AC22 /* CoffeeMeetsBagel */ = {
+			isa = PBXGroup;
+			children = (
+				7B32751D1DDE0B3A00B9AC22 /* AppDelegate.h */,
+				7B32751E1DDE0B3A00B9AC22 /* AppDelegate.m */,
+				7B3275561DDE0C5E00B9AC22 /* Model */,
+				7B3275571DDE0C7A00B9AC22 /* View */,
+				7B3275581DDE0C8100B9AC22 /* Controller */,
+				7B3275231DDE0B3A00B9AC22 /* Main.storyboard */,
+				7B3275291DDE0B3A00B9AC22 /* Assets.xcassets */,
+				7B32752B1DDE0B3A00B9AC22 /* LaunchScreen.storyboard */,
+				7B32752E1DDE0B3A00B9AC22 /* Info.plist */,
+				7B3275261DDE0B3A00B9AC22 /* CoffeeMeetsBagel.xcdatamodeld */,
+				7B32751A1DDE0B3A00B9AC22 /* Supporting Files */,
+			);
+			path = CoffeeMeetsBagel;
+			sourceTree = "<group>";
+		};
+		7B32751A1DDE0B3A00B9AC22 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7B32751B1DDE0B3A00B9AC22 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7B3275361DDE0B3A00B9AC22 /* CoffeeMeetsBagelTests */ = {
+			isa = PBXGroup;
+			children = (
+				7B3275371DDE0B3A00B9AC22 /* CoffeeMeetsBagelTests.m */,
+				7B3275391DDE0B3A00B9AC22 /* Info.plist */,
+			);
+			path = CoffeeMeetsBagelTests;
+			sourceTree = "<group>";
+		};
+		7B3275411DDE0B3A00B9AC22 /* CoffeeMeetsBagelUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7B3275421DDE0B3A00B9AC22 /* CoffeeMeetsBagelUITests.m */,
+				7B3275441DDE0B3A00B9AC22 /* Info.plist */,
+			);
+			path = CoffeeMeetsBagelUITests;
+			sourceTree = "<group>";
+		};
+		7B3275561DDE0C5E00B9AC22 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7B3275591DDE0CAB00B9AC22 /* CoreDataModel */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		7B3275571DDE0C7A00B9AC22 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		7B3275581DDE0C8100B9AC22 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7B32755A1DDE0D4C00B9AC22 /* TeamFeedViewController.h */,
+				7B32755B1DDE0D4C00B9AC22 /* TeamFeedViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		7B3275591DDE0CAB00B9AC22 /* CoreDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				7B32756A1DDE295C00B9AC22 /* CBTeamMember.h */,
+				7B32756B1DDE295C00B9AC22 /* CBTeamMember.m */,
+				7B32756C1DDE295C00B9AC22 /* CBTeamMember+CoreDataProperties.h */,
+				7B32756D1DDE295C00B9AC22 /* CBTeamMember+CoreDataProperties.m */,
+				7B32755D1DDE0D7200B9AC22 /* CBCoredataStack.h */,
+				7B32755E1DDE0D7200B9AC22 /* CBCoredataStack.m */,
+			);
+			name = CoreDataModel;
+			sourceTree = "<group>";
+		};
+		7B3275601DDE102800B9AC22 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7B3275611DDE102900B9AC22 /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7B3275161DDE0B3A00B9AC22 /* CoffeeMeetsBagel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B3275471DDE0B3A00B9AC22 /* Build configuration list for PBXNativeTarget "CoffeeMeetsBagel" */;
+			buildPhases = (
+				7B3275131DDE0B3A00B9AC22 /* Sources */,
+				7B3275141DDE0B3A00B9AC22 /* Frameworks */,
+				7B3275151DDE0B3A00B9AC22 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CoffeeMeetsBagel;
+			productName = CoffeeMeetsBagel;
+			productReference = 7B3275171DDE0B3A00B9AC22 /* CoffeeMeetsBagel.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7B3275321DDE0B3A00B9AC22 /* CoffeeMeetsBagelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B32754A1DDE0B3A00B9AC22 /* Build configuration list for PBXNativeTarget "CoffeeMeetsBagelTests" */;
+			buildPhases = (
+				7B32752F1DDE0B3A00B9AC22 /* Sources */,
+				7B3275301DDE0B3A00B9AC22 /* Frameworks */,
+				7B3275311DDE0B3A00B9AC22 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7B3275351DDE0B3A00B9AC22 /* PBXTargetDependency */,
+			);
+			name = CoffeeMeetsBagelTests;
+			productName = CoffeeMeetsBagelTests;
+			productReference = 7B3275331DDE0B3A00B9AC22 /* CoffeeMeetsBagelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7B32753D1DDE0B3A00B9AC22 /* CoffeeMeetsBagelUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B32754D1DDE0B3A00B9AC22 /* Build configuration list for PBXNativeTarget "CoffeeMeetsBagelUITests" */;
+			buildPhases = (
+				7B32753A1DDE0B3A00B9AC22 /* Sources */,
+				7B32753B1DDE0B3A00B9AC22 /* Frameworks */,
+				7B32753C1DDE0B3A00B9AC22 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7B3275401DDE0B3A00B9AC22 /* PBXTargetDependency */,
+			);
+			name = CoffeeMeetsBagelUITests;
+			productName = CoffeeMeetsBagelUITests;
+			productReference = 7B32753E1DDE0B3A00B9AC22 /* CoffeeMeetsBagelUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7B32750F1DDE0B3A00B9AC22 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "James Rochabrun";
+				TargetAttributes = {
+					7B3275161DDE0B3A00B9AC22 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = ULU46F325W;
+						ProvisioningStyle = Automatic;
+					};
+					7B3275321DDE0B3A00B9AC22 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = ULU46F325W;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7B3275161DDE0B3A00B9AC22;
+					};
+					7B32753D1DDE0B3A00B9AC22 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = ULU46F325W;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7B3275161DDE0B3A00B9AC22;
+					};
+				};
+			};
+			buildConfigurationList = 7B3275121DDE0B3A00B9AC22 /* Build configuration list for PBXProject "CoffeeMeetsBagel" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7B32750E1DDE0B3A00B9AC22;
+			productRefGroup = 7B3275181DDE0B3A00B9AC22 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7B3275161DDE0B3A00B9AC22 /* CoffeeMeetsBagel */,
+				7B3275321DDE0B3A00B9AC22 /* CoffeeMeetsBagelTests */,
+				7B32753D1DDE0B3A00B9AC22 /* CoffeeMeetsBagelUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7B3275151DDE0B3A00B9AC22 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B32752D1DDE0B3A00B9AC22 /* LaunchScreen.storyboard in Resources */,
+				7B32752A1DDE0B3A00B9AC22 /* Assets.xcassets in Resources */,
+				7B3275251DDE0B3A00B9AC22 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B3275311DDE0B3A00B9AC22 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B32753C1DDE0B3A00B9AC22 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7B3275131DDE0B3A00B9AC22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B3275701DDE2BD500B9AC22 /* CoffeeMeetsBagel.xcdatamodeld in Sources */,
+				7B32751F1DDE0B3A00B9AC22 /* AppDelegate.m in Sources */,
+				7B32756F1DDE295C00B9AC22 /* CBTeamMember+CoreDataProperties.m in Sources */,
+				7B32755F1DDE0D7200B9AC22 /* CBCoredataStack.m in Sources */,
+				7B32751C1DDE0B3A00B9AC22 /* main.m in Sources */,
+				7B32755C1DDE0D4C00B9AC22 /* TeamFeedViewController.m in Sources */,
+				7B32756E1DDE295C00B9AC22 /* CBTeamMember.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B32752F1DDE0B3A00B9AC22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B3275381DDE0B3A00B9AC22 /* CoffeeMeetsBagelTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B32753A1DDE0B3A00B9AC22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B3275431DDE0B3A00B9AC22 /* CoffeeMeetsBagelUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7B3275351DDE0B3A00B9AC22 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7B3275161DDE0B3A00B9AC22 /* CoffeeMeetsBagel */;
+			targetProxy = 7B3275341DDE0B3A00B9AC22 /* PBXContainerItemProxy */;
+		};
+		7B3275401DDE0B3A00B9AC22 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7B3275161DDE0B3A00B9AC22 /* CoffeeMeetsBagel */;
+			targetProxy = 7B32753F1DDE0B3A00B9AC22 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7B3275231DDE0B3A00B9AC22 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7B3275241DDE0B3A00B9AC22 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7B32752B1DDE0B3A00B9AC22 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7B32752C1DDE0B3A00B9AC22 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7B3275451DDE0B3A00B9AC22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7B3275461DDE0B3A00B9AC22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7B3275481DDE0B3A00B9AC22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ULU46F325W;
+				INFOPLIST_FILE = CoffeeMeetsBagel/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.speedelo.CoffeeMeetsBagel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7B3275491DDE0B3A00B9AC22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ULU46F325W;
+				INFOPLIST_FILE = CoffeeMeetsBagel/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.speedelo.CoffeeMeetsBagel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		7B32754B1DDE0B3A00B9AC22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = ULU46F325W;
+				INFOPLIST_FILE = CoffeeMeetsBagelTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.speedelo.CoffeeMeetsBagelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoffeeMeetsBagel.app/CoffeeMeetsBagel";
+			};
+			name = Debug;
+		};
+		7B32754C1DDE0B3A00B9AC22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = ULU46F325W;
+				INFOPLIST_FILE = CoffeeMeetsBagelTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.speedelo.CoffeeMeetsBagelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoffeeMeetsBagel.app/CoffeeMeetsBagel";
+			};
+			name = Release;
+		};
+		7B32754E1DDE0B3A00B9AC22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = ULU46F325W;
+				INFOPLIST_FILE = CoffeeMeetsBagelUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.speedelo.CoffeeMeetsBagelUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = CoffeeMeetsBagel;
+			};
+			name = Debug;
+		};
+		7B32754F1DDE0B3A00B9AC22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = ULU46F325W;
+				INFOPLIST_FILE = CoffeeMeetsBagelUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.speedelo.CoffeeMeetsBagelUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = CoffeeMeetsBagel;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7B3275121DDE0B3A00B9AC22 /* Build configuration list for PBXProject "CoffeeMeetsBagel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B3275451DDE0B3A00B9AC22 /* Debug */,
+				7B3275461DDE0B3A00B9AC22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7B3275471DDE0B3A00B9AC22 /* Build configuration list for PBXNativeTarget "CoffeeMeetsBagel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B3275481DDE0B3A00B9AC22 /* Debug */,
+				7B3275491DDE0B3A00B9AC22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7B32754A1DDE0B3A00B9AC22 /* Build configuration list for PBXNativeTarget "CoffeeMeetsBagelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B32754B1DDE0B3A00B9AC22 /* Debug */,
+				7B32754C1DDE0B3A00B9AC22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7B32754D1DDE0B3A00B9AC22 /* Build configuration list for PBXNativeTarget "CoffeeMeetsBagelUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B32754E1DDE0B3A00B9AC22 /* Debug */,
+				7B32754F1DDE0B3A00B9AC22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7B3275261DDE0B3A00B9AC22 /* CoffeeMeetsBagel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7B3275271DDE0B3A00B9AC22 /* CoffeeMeetsBagel.xcdatamodel */,
+			);
+			currentVersion = 7B3275271DDE0B3A00B9AC22 /* CoffeeMeetsBagel.xcdatamodel */;
+			path = CoffeeMeetsBagel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 7B32750F1DDE0B3A00B9AC22 /* Project object */;
+}
