@@ -25,6 +25,18 @@ blue:(255&rgbValue)/255.0f \
 alpha:alphaValue]
 
 #define IS_IPHONE4  ( [UIScreen  mainScreen].bounds.size.height <= 480)
+//Color palette
+static NSUInteger kColorCoffeeBlue = 0xFF0085da;
+static NSUInteger kColorCoffeeRed = 0xFFfe368e;
+static NSUInteger kColorCoffeePink = 0xFFf1906f;
+static const NSUInteger kColorGrayLight = 0xFFB2B2B2;
+static const NSUInteger kColorGrayMiddle = 0xFF53585F;
+static const NSUInteger kColorWhite = 0xFFFFFFFF;
+static const NSUInteger kColorBlack = 0xFF000000;
+static const NSUInteger kColorClear = 0x00000000;
+
+
+
 
 //KGeomValues
 static CGFloat kGeomToolBarButtonSize = 40.0;

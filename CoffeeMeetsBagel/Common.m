@@ -7,6 +7,9 @@
 //
 
 #import "Common.h"
+#import <CoreImage/CoreImage.h>
+#import "CommonUI.h"
+
 
 NSString * parseStringOrNullFromServer (id object) {
     
@@ -16,6 +19,17 @@ NSString * parseStringOrNullFromServer (id object) {
     return nil;
 }
 
+
 @implementation Common
+
++ (void)addBorderTo:(UIView *)view withColor:(NSUInteger)color width:(CGFloat)width {
+    
+    if (!color) {
+        color = kColorCoffeeBlue;
+    }
+    view.layer.borderColor = UIColorRGBA(color).CGColor;
+    view.layer.borderWidth = width;
+}
+
 
 @end

@@ -18,5 +18,6 @@ static inline CGFloat originX(UIView *view) {return view.frame.origin.x; }
 extern NSString * parseStringOrNullFromServer (id object);
 
 @interface Common : NSObject
++ (void)addBorderTo:(UIView *)view withColor:(NSUInteger)color width:(CGFloat)width;
 
 @end
