@@ -25,19 +25,5 @@
     return collectionView;
 }
 
-+ (UICollectionView *)collectionViewInView:(UIView *)view direction:(UICollectionViewScrollDirection)direction withItemSize:(CGSize)itemSize delegate:(id)delegate {
-    
-    CGFloat w = itemSize.width;
-    //This grid is by 3 cells in a row so that means that the amount of spaces between them are 2
-    CGFloat innerSpaceBetweenCellsInRow = 2.0;
-    CGFloat dynamicItemSize = (w - innerSpaceBetweenCellsInRow * kGeomMinimunInterItemSpacing) / 3;
-
-    UICollectionViewFlowLayout *cvLayout = [[UICollectionViewFlowLayout alloc] init];
-    cvLayout.itemSize = CGSizeMake(dynamicItemSize, dynamicItemSize);
-    cvLayout.scrollDirection = direction;
-    cvLayout.minimumInteritemSpacing = kGeomMinimunInterItemSpacing;
-    cvLayout.minimumLineSpacing = kGeomSpaceCellPadding;
-    return [UICollectionView collectionViewWithLayout:cvLayout inView:view delegate:delegate];
-}
 
 @end

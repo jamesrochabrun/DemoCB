@@ -14,6 +14,8 @@
 #import "Common.h"
 #import "CommonUI.h"
 #import "CBAPI.h"
+#import "GridLayout.h"
+#import "GridCollectionViewCell.h"
 
 @interface TeamFeedViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong) UILabel *label;
@@ -33,12 +35,13 @@
     _toolBar = [CustomToolbar new];
     [_toolBar.coffeeButton setSelected:YES];
     [self.view addSubview:_toolBar];
-    
-    _gridCollectionView = [UICollectionView collectionViewInView:self.view direction:UICollectionViewScrollDirectionVertical withItemSize:self.view.frame.size delegate:self];
-    [_gridCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:kReuseIdentifierGridCell];
+        
+    GridLayout *gridLayout = [GridLayout new];
+    _gridCollectionView = [UICollectionView collectionViewWithLayout:gridLayout inView:self.view delegate:self];
+    [_gridCollectionView registerClass:[GridCollectionViewCell class] forCellWithReuseIdentifier:kReuseIdentifierGridCell];
 
+    //[self getDataFromJsonAndSaveInCoreData];
     [self fetchDataFromCoreData];
-    [self getDataFromJsonAndSaveInCoreData];
 }
 
 - (void)getDataFromJsonAndSaveInCoreData {
@@ -84,13 +87,15 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 15;
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+    return [sectionInfo numberOfObjects];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kReuseIdentifierGridCell forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor blueColor];
+    GridCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kReuseIdentifierGridCell forIndexPath:indexPath];
+    CBTeamMember *teamMember = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [cell configureCellWithTeamData:teamMember];
     return cell;
 }
 

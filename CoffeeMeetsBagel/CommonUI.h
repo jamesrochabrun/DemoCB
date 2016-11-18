@@ -30,9 +30,8 @@ alpha:alphaValue]
 static CGFloat kGeomToolBarButtonSize = 40.0;
 static CGFloat kGeomHeightToolBar = 49.0;
 //horizontal
-static CGFloat kGeomMinimunInterItemSpacing = 4.0;
+static CGFloat kGeomMinimunInterCellSpacing = 4.0;
 //vertical
-static CGFloat kGeomSpaceCellPadding = 4.0;
 
 //KConstants
 extern NSString *const kReuseIdentifierGridCell;
