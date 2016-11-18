@@ -19,6 +19,7 @@
         
         _imageView = [UIImageView new];
         _imageView.clipsToBounds = YES;
+
     }
     return self;
 }
@@ -32,5 +33,6 @@
         weakSelf.backgroundView = _imageView;
     });
 }
+
 
 @end

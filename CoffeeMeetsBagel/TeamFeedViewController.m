@@ -24,6 +24,7 @@
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) CustomToolbar *toolBar;
 @property (nonatomic, strong) UICollectionView *gridCollectionView;
+@property (nonatomic) GridLayout *gridLayout;
 
 
 @end
@@ -32,20 +33,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-   // self.view.backgroundColor = [UIColor redColor];
+
     _toolBar = [CustomToolbar new];
     [_toolBar.coffeeButton setSelected:YES];
     [self.view addSubview:_toolBar];
         
-    GridLayout *gridLayout = [GridLayout new];
-    _gridCollectionView = [UICollectionView collectionViewWithLayout:gridLayout inView:self.view delegate:self];
+    _gridLayout = [GridLayout new];
+    _gridCollectionView = [UICollectionView collectionViewWithLayout:_gridLayout inView:self.view delegate:self];
     [_gridCollectionView registerClass:[GridCollectionViewCell class] forCellWithReuseIdentifier:kReuseIdentifierGridCell];
 
     //[self getDataFromJsonAndSaveInCoreData];
     [self fetchDataFromCoreData];
 }
-
 - (void)getDataFromJsonAndSaveInCoreData {
     
     [CBAPI getDataFromPathWithSucces:^(id responseObject) {
@@ -67,6 +66,7 @@
     frame.size.height = CGRectGetMinY(_toolBar.frame) - frame.origin.y;
     frame.size.width = width(self.view);
     _gridCollectionView.frame = frame;
+    [_gridLayout invalidateLayout];
 }
 
 
