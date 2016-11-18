@@ -16,8 +16,10 @@
 #import "CBAPI.h"
 #import "GridLayout.h"
 #import "GridCollectionViewCell.h"
+#import "DetailViewController.h"
 
-@interface TeamFeedViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
+
+@interface TeamFeedViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UIViewControllerTransitioningDelegate>
 @property (nonatomic, strong) UILabel *label;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) CustomToolbar *toolBar;
@@ -79,8 +81,6 @@
     
     _fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:fetchRequest managedObjectContext:coreDataStack.managedObjectContext sectionNameKeyPath:@"sectionName" cacheName:nil];
     
-      _fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:fetchRequest managedObjectContext:coreDataStack.managedObjectContext sectionNameKeyPath:@"sectionName" cacheName:nil];
-    
     //_fetchedResultsController.delegate = self;
     
     [self.fetchedResultsController performFetch:nil];
@@ -102,6 +102,23 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+
+    CBTeamMember *teamMember = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSLog(@"the name is %@", teamMember.firstName);
+    [self showExpandedProfile:teamMember];
+}
+
+
+- (void)showExpandedProfile:(CBTeamMember *)teamMember {
+    
+    DetailViewController *vc = [[DetailViewController alloc] init];
+    vc.teamMember = teamMember;
+    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    vc.transitioningDelegate = self;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 

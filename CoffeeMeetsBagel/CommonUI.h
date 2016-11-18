@@ -29,6 +29,7 @@ alpha:alphaValue]
 //KGeomValues
 static CGFloat kGeomToolBarButtonSize = 40.0;
 static CGFloat kGeomHeightToolBar = 49.0;
+static CGFloat kGeomButtonSize = 40.0;
 //horizontal
 static CGFloat kGeomMinimunInterCellSpacing = 4.0;
 //vertical

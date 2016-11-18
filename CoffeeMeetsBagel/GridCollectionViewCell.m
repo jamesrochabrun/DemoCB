@@ -19,8 +19,6 @@
         
         _imageView = [UIImageView new];
         _imageView.clipsToBounds = YES;
-        self.backgroundView = _imageView;
-        
     }
     return self;
 }
@@ -29,6 +27,10 @@
     
     NSURL *urlStr = [NSURL URLWithString:teamMember.avatar];
     [_imageView setImageWithURL:urlStr placeholderImage:[UIImage imageNamed:@""]];
+    __weak GridCollectionViewCell *weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        weakSelf.backgroundView = _imageView;
+    });
 }
 
 @end
