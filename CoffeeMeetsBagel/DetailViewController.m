@@ -69,13 +69,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    _avatarView.alpha = 0;
-    _avatarView.transform = CGAffineTransformMakeScale(0,0);
-
-    [UIView animateWithDuration:1 animations:^{
-        _avatarView.alpha = 1;
-        _avatarView.transform = CGAffineTransformMakeScale(1,1);
-    }];
+//    _avatarView.alpha = 0;
+//    _avatarView.transform = CGAffineTransformMakeScale(0,0);
+//
+//    [UIView animateWithDuration:1 animations:^{
+//        _avatarView.alpha = 1;
+//        _avatarView.transform = CGAffineTransformMakeScale(1,1);
+//    }];
 }
 
 - (void)displayContent:(CBTeamMember *)teamMember {

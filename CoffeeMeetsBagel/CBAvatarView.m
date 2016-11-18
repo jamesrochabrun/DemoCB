@@ -32,12 +32,15 @@
         _avatarImageview = [UIImageView new];
         _avatarImageview.layer.masksToBounds = YES;
         _avatarImageview.contentMode = UIViewContentModeScaleAspectFit;
+        _avatarImageview.alpha = 0;
+
         //[Common addBorderTo:_avatarImageview withColor:kColorCoffeePink width:2];
         [self addSubview:_avatarImageview];
         
         _logoView = [UIImageView new];
         _logoView.layer.masksToBounds = YES;
         _logoView.contentMode = UIViewContentModeScaleAspectFit;
+        _logoView.alpha = 0;
         [Common addBorderTo:_logoView withColor:kColorCoffeeRed width:1];
         [self addSubview:_logoView];
     }
@@ -73,6 +76,8 @@
     frame.origin.y = CGRectGetMaxY(_avatarImageview.frame) - frame.size.height;
     _logoView.frame = frame;
     _logoView.layer.cornerRadius = frame.size.width / 2;
+    
+    [self performAnimation];
 }
 
 - (void)setTeamMember:(CBTeamMember *)teamMember {
@@ -89,6 +94,23 @@
     
 }
 
+- (void)performAnimation {
+    
+    _avatarImageview.transform = CGAffineTransformMakeScale(0,0);
+    _logoView.transform = CGAffineTransformMakeScale(0,0);
+    
+    [UIView animateWithDuration:0.7 animations:^{
+        _avatarImageview.alpha = 1;
+        _avatarImageview.transform = CGAffineTransformMakeScale(1,1);
+    }];
+    
+    [UIView animateWithDuration:0.7 animations:^{
+        _logoView.alpha = 1;
+        _logoView.transform = CGAffineTransformMakeScale(1,1);
+    }];
+
+
+}
 
 
 
