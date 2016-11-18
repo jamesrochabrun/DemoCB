@@ -28,8 +28,20 @@ NSString * parseStringOrNullFromServer (id object) {
         color = kColorCoffeeBlue;
     }
     view.layer.borderColor = UIColorRGBA(color).CGColor;
-    view.layer.borderWidth = width;
+    view.layer.borderWidth = (IS_IPHONE)? width: width * 3;
 }
+
++ (void)setStatusBarBackgroundColor:(UIColor *)color {
+    
+    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+    
+    if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
+        statusBar.backgroundColor = color;
+    }
+}
+
+
+
 
 
 @end

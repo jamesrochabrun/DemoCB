@@ -12,12 +12,13 @@
 #import "CBTeamMember.h"
 #import "UIImageView+AFNetworking.h"
 #import "CBAvatarView.h"
-
+#import "DetailInfoView.h"
 
 @interface DetailViewController ()<UIScrollViewDelegate>
 @property (nonatomic, strong) UIButton *dismissButton;
 @property (nonatomic, strong) UIView *triangleView;
 @property (nonatomic, strong) CBAvatarView *avatarView;
+@property (nonatomic, strong) DetailInfoView *detailView;
 @property (nonatomic, strong) UIScrollView *scrollView;
 
 @end
@@ -57,9 +58,16 @@
     _avatarView.backgroundColor = [UIColor grayColor];
     [_scrollView addSubview:_avatarView];
     
+    _detailView = [DetailInfoView new];
+    _detailView.teamMember = _teamMember;
+    _detailView.backgroundColor = [UIColor grayColor];
+    _detailView.alpha = 0;
+    [_scrollView addSubview:_detailView];
+    
     _dismissButton = [UIButton new];
     [_dismissButton addTarget:self action:@selector(dismissView) forControlEvents:UIControlEventTouchUpInside];
-    [_dismissButton setBackgroundColor:[UIColor greenColor]];
+    [_dismissButton setImage:[UIImage imageNamed:@"dismiss"] forState:UIControlStateNormal];
+    _dismissButton.alpha = 0;
     [self.view addSubview:_dismissButton];
     
     [self displayContent:_teamMember];
@@ -69,13 +77,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-//    _avatarView.alpha = 0;
-//    _avatarView.transform = CGAffineTransformMakeScale(0,0);
-//
-//    [UIView animateWithDuration:1 animations:^{
-//        _avatarView.alpha = 1;
-//        _avatarView.transform = CGAffineTransformMakeScale(1,1);
-//    }];
+    _dismissButton.alpha =
+    _detailView.alpha = 0;
+
+    [UIView animateWithDuration:1 animations:^{
+        _dismissButton.alpha =
+        _detailView.alpha = 1;
+    }];
 }
 
 - (void)displayContent:(CBTeamMember *)teamMember {
@@ -93,10 +101,10 @@
     [super viewWillLayoutSubviews];
     
     CGRect frame = _dismissButton.frame;
-    frame.size.height = kGeomButtonSize;
-    frame.size.width = kGeomButtonSize;
-    frame.origin.x = 20;
-    frame.origin.y = 20;
+    frame.size.height = (IS_IPHONE)? kGeomButtonSize: kGeomButtonSizeBig;
+    frame.size.width = (IS_IPHONE)? kGeomButtonSize: kGeomButtonSizeBig;
+    frame.origin.x = kGeomSpace;
+    frame.origin.y = kGeomSpace;
     _dismissButton.frame = frame;
     
     frame = _scrollView.frame;
@@ -107,11 +115,21 @@
     _scrollView.frame = frame;
     
     frame = _avatarView.frame;
-    frame.size.height = width(self.view) * 0.6;
+    frame.size.height = width(self.view) * 0.5;
     frame.size.width = width(self.view);
     frame.origin.x = 0;//(width(self.view) - frame.size.width) /2;
     frame.origin.y = 0;
     _avatarView.frame = frame;
+    
+    frame = _detailView.frame;
+    frame.size.height = 100;
+    frame.size.width = width(self.view);
+    frame.origin.x = 0;
+    frame.origin.y = CGRectGetMaxY(_avatarView.frame);
+    _detailView.frame = frame;
+
+    
+    
     
     frame = _triangleView.frame;
     frame.origin.x = 0;

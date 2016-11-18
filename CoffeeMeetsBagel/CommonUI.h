@@ -24,7 +24,7 @@ green:(255&(rgbValue >> 8))/255.0f \
 blue:(255&rgbValue)/255.0f \
 alpha:alphaValue]
 
-#define IS_IPHONE4  ( [UIScreen  mainScreen].bounds.size.height <= 480)
+#define IS_IPHONE  ( [UIScreen  mainScreen].bounds.size.height <= 750)
 //Color palette
 static NSUInteger kColorCoffeeBlue = 0xFF0085da;
 static NSUInteger kColorCoffeeRed = 0xFFfe368e;
@@ -34,14 +34,19 @@ static const NSUInteger kColorGrayMiddle = 0xFF53585F;
 static const NSUInteger kColorWhite = 0xFFFFFFFF;
 static const NSUInteger kColorBlack = 0xFF000000;
 static const NSUInteger kColorClear = 0x00000000;
-
-
+static const NSUInteger kColorYellow = 0xFFffc01b;
 
 
 //KGeomValues
 static CGFloat kGeomToolBarButtonSize = 40.0;
 static CGFloat kGeomHeightToolBar = 49.0;
 static CGFloat kGeomButtonSize = 40.0;
+static CGFloat kGeomButtonSizeBig = 70;
+static CGFloat kGeomSpace = 25;
+static CGFloat kGeomLabelHeight = 30;
+static CGFloat kGeomPaddingBig = 10;
+static CGFloat kGeomPaddingMedium = 7;
+static CGFloat kGeomPaddingSmall = 4;
 //horizontal
 static CGFloat kGeomMinimunInterCellSpacing = 4.0;
 //vertical
