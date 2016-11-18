@@ -8,6 +8,13 @@
 
 #import "Common.h"
 
+NSString * parseStringOrNullFromServer (id object) {
+    
+    if  (object && [object isKindOfClass:[NSString class]]) {
+        return  (NSString *)object;
+    }
+    return nil;
+}
 
 @implementation Common
 

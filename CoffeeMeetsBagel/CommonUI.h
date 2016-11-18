@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class AppDelegate;
 // Convenience Macros
 #define UIColorRGB(rgbValue) [UIColor colorWithRed:(255&(rgbValue>> 16))/255.0f \
 green:(255&(rgbValue >> 8))/255.0 \
@@ -22,12 +23,30 @@ alpha:(rgbValue >> 24)/255.0f]
 green:(255&(rgbValue >> 8))/255.0f \
 blue:(255&rgbValue)/255.0f \
 alpha:alphaValue]
+
 #define IS_IPHONE4  ( [UIScreen  mainScreen].bounds.size.height <= 480)
 
+//KGeomValues
 static CGFloat kGeomToolBarButtonSize = 40.0;
 static CGFloat kGeomHeightToolBar = 49.0;
-
 //horizontal
 static CGFloat kGeomMinimunInterItemSpacing = 4.0;
 //vertical
 static CGFloat kGeomSpaceCellPadding = 4.0;
+
+//KConstants
+extern NSString *const kReuseIdentifierGridCell;
+extern NSString *const kTeamMember;
+extern NSString *const kTeamMember;
+extern NSString *const kMemberfirstName;
+extern NSString *const kMemberLastName;
+extern NSString *const kMemberBio;
+extern NSString *const kMemberID;
+extern NSString *const kMemberAvatar;
+extern NSString *const kMemberTitle;
+extern NSString *const kFileName;
+extern NSString *const kTypeFile;
+
+
+
+

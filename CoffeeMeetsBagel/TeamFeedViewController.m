@@ -12,7 +12,8 @@
 #import "CustomToolbar.h"
 #import "UICollectionView+Addition.h"
 #import "Common.h"
-
+#import "CommonUI.h"
+#import "CBAPI.h"
 
 @interface TeamFeedViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong) UILabel *label;
@@ -34,35 +35,37 @@
     [self.view addSubview:_toolBar];
     
     _gridCollectionView = [UICollectionView collectionViewInView:self.view direction:UICollectionViewScrollDirectionVertical withItemSize:self.view.frame.size delegate:self];
-    [_gridCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
-    
-    
-    CBCoredataStack *coreDataStack = [CBCoredataStack defaultStack];
-    CBTeamMember *tm = [NSEntityDescription insertNewObjectForEntityForName:@"CBTeamMember" inManagedObjectContext:coreDataStack.managedObjectContext];
-    tm.firstName = @"carlos";
-    tm.lastName = @"salum";
-    tm.bio = @"ahuevonado";
-    tm.teamID = 13636;
-    
-    [coreDataStack saveContext];
-    
-    [self fetch];
+    [_gridCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:kReuseIdentifierGridCell];
+
+    [self fetchDataFromCoreData];
+    [self getDataFromJsonAndSaveInCoreData];
 }
+
+- (void)getDataFromJsonAndSaveInCoreData {
+    
+    [CBAPI getDataFromPathWithSucces:^(id responseObject) {
+        CBCoredataStack *coreDataStack = [CBCoredataStack defaultStack];
+        for (NSDictionary *memberData in responseObject) {
+            [CBTeamMember memberFromDict:memberData inCoreDataStack:coreDataStack];
+        }
+        [coreDataStack saveContext];
+    }];
+}
+
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     
     CGRect frame = _gridCollectionView.frame;
-    frame.size.height = height(self.view) - height(_toolBar);
-    frame.size.width = width(self.view);
     frame.origin.x = 0;
-    frame.origin.y = 0;
+    frame.origin.y = [UIApplication sharedApplication].statusBarFrame.size.height;
+    frame.size.height = CGRectGetMinY(_toolBar.frame) - frame.origin.y;
+    frame.size.width = width(self.view);
     _gridCollectionView.frame = frame;
 }
 
 
-- (void)fetch {
-    
+- (void)fetchDataFromCoreData {
     
     CBCoredataStack *coreDataStack = [CBCoredataStack  defaultStack];
     
@@ -86,7 +89,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kReuseIdentifierGridCell forIndexPath:indexPath];
     cell.backgroundColor = [UIColor blueColor];
     return cell;
 }

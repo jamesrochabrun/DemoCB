@@ -8,6 +8,10 @@
 //
 
 #import "CBTeamMember+CoreDataProperties.h"
+#import "CBTeamMember.h"
+#import "CommonUI.h"
+#import "CBCoredataStack.h"
+#import "Common.h"
 
 @implementation CBTeamMember (CoreDataProperties)
 
@@ -26,6 +30,19 @@
     
     NSString *str = @"section";
     return str;
+}
+
++ (CBTeamMember *)memberFromDict:(NSDictionary *)memberData inCoreDataStack:(CBCoredataStack *)coreDataStack {
+    
+    CBTeamMember *teamMember = [NSEntityDescription insertNewObjectForEntityForName:kTeamMember inManagedObjectContext:coreDataStack.managedObjectContext];
+    teamMember.firstName = parseStringOrNullFromServer(memberData[kMemberfirstName]);
+    teamMember.lastName = parseStringOrNullFromServer(memberData[kMemberLastName]);
+    teamMember.bio = parseStringOrNullFromServer(memberData[kMemberBio]);
+    teamMember.teamID = parseStringOrNullFromServer(memberData[kMemberID]);
+    teamMember.avatar = parseStringOrNullFromServer(memberData[kMemberAvatar]);
+    teamMember.title = parseStringOrNullFromServer(memberData[kMemberTitle]);
+    return teamMember;
+    
 }
 
 @end
