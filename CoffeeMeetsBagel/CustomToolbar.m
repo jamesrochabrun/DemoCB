@@ -51,11 +51,18 @@
 }
 
 - (void)goToHome {
-    
+    [self.del goToHome];
+    _favoritesSelected = NO;
+    [_coffeeButton setSelected:YES];
+    [_coffeeButton setSelected:NO];
 }
 
 - (void)goToFavorites {
     
+    [self.del goToFavorites];
+    [_bagelButton setSelected:YES];
+    [_bagelButton setSelected:NO];
+    _favoritesSelected = YES;
 }
 
 @end

@@ -19,23 +19,29 @@
 #import "DetailViewController.h"
 
 
-@interface TeamFeedViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UIViewControllerTransitioningDelegate>
+@interface TeamFeedViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UIViewControllerTransitioningDelegate, CustomToolBarDelegate, NSFetchedResultsControllerDelegate>
 @property (nonatomic, strong) UILabel *label;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) CustomToolbar *toolBar;
 @property (nonatomic, strong) UICollectionView *gridCollectionView;
 @property (nonatomic) GridLayout *gridLayout;
+@property BOOL shouldReloadCollectionView;
 
 
 @end
 
 @implementation TeamFeedViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self.fetchedResultsController performFetch:nil];
+
     _toolBar = [CustomToolbar new];
     [_toolBar.coffeeButton setSelected:YES];
+    _shouldReloadCollectionView = NO;
+    _toolBar.del = self;
     [self.view addSubview:_toolBar];
         
     _gridLayout = [GridLayout new];
@@ -43,7 +49,7 @@
     [_gridCollectionView registerClass:[GridCollectionViewCell class] forCellWithReuseIdentifier:kReuseIdentifierGridCell];
 
     //[self getDataFromJsonAndSaveInCoreData];
-    [self fetchDataFromCoreData];
+    //[self fetchDataFromCoreData];
     
 //        NSArray *fontFamilies = [UIFont familyNames];
 //    
@@ -67,7 +73,6 @@
     }];
 }
 
-
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     
@@ -80,26 +85,41 @@
     [_gridLayout invalidateLayout];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.fetchedResultsController performFetch:nil];
+    [self.gridCollectionView reloadData];
 
-- (void)fetchDataFromCoreData {
-    
-    CBCoredataStack *coreDataStack = [CBCoredataStack  defaultStack];
+}
+
+- (NSFetchRequest *)entrylistfetchRequest {
     
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"CBTeamMember"];
     fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES]];
-//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isFavorite == %d", YES];
-//    [fetchRequest setPredicate:predicate];
+    return  fetchRequest;
+}
+
+- (NSFetchedResultsController *)fetchedResultsController {
+    
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
+    
+    CBCoredataStack *coreDataStack = [CBCoredataStack  defaultStack];
+    NSFetchRequest *fetchRequest = [self entrylistfetchRequest];
     
     _fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:fetchRequest managedObjectContext:coreDataStack.managedObjectContext sectionNameKeyPath:@"sectionName" cacheName:nil];
-    
-    //_fetchedResultsController.delegate = self;
-    
-    [self.fetchedResultsController performFetch:nil];
+    _fetchedResultsController.delegate = self;
+    return _fetchedResultsController;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
     return [sectionInfo numberOfObjects];
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return self.fetchedResultsController.sections.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -122,7 +142,6 @@
     [self showExpandedProfile:teamMember];
 }
 
-
 - (void)showExpandedProfile:(CBTeamMember *)teamMember {
     
     DetailViewController *vc = [[DetailViewController alloc] init];
@@ -132,18 +151,39 @@
     [self presentViewController:vc animated:YES completion:nil];
 }
 
+- (void)goToHome {
+    
+    if (!_shouldReloadCollectionView) {
+        return;
+    }
+    [self fetchCoffeeOrBagelsAndReloadData:NO];
+    _shouldReloadCollectionView = NO;
+}
 
+- (void)goToFavorites {
+    [self fetchCoffeeOrBagelsAndReloadData:YES];
+    _shouldReloadCollectionView = YES;
+}
 
-
-
-
-
-
-
-
-
-
-
-
+- (void)fetchCoffeeOrBagelsAndReloadData:(BOOL)isBagel {
+    
+    CBCoredataStack *coreDataStack = [CBCoredataStack  defaultStack];
+    
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"CBTeamMember"];
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES]];
+    
+    if (isBagel) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isBagel == %d", YES];
+        [fetchRequest setPredicate:predicate];
+    }
+    _fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:fetchRequest managedObjectContext:coreDataStack.managedObjectContext sectionNameKeyPath:@"sectionName" cacheName:nil];
+    
+    [self.fetchedResultsController performFetch:nil];
+    __weak TeamFeedViewController *weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+    [weakSelf.gridCollectionView reloadData];
+    });
+}
 
 @end
+

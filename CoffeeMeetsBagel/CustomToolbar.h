@@ -8,12 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol CustomToolBarDelegate
+
+- (void)goToFavorites;
+- (void)goToHome;
+
+@end
+
 @interface CustomToolbar : UIToolbar
 @property (nonatomic, strong) UIButton *coffeeButton;
 @property (nonatomic, strong) UIButton *bagelButton;
 @property (nonatomic, strong) UIBarButtonItem *coffeeBarButton;
 @property (nonatomic, strong) UIBarButtonItem *bagelBarButton;
 @property (nonatomic, strong) UIBarButtonItem *spacer;
+@property (nonatomic, weak) id<CustomToolBarDelegate>del;
+@property (nonatomic, assign) BOOL favoritesSelected;
 
 
 @end

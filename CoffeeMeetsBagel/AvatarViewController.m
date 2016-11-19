@@ -15,8 +15,6 @@
 @interface AvatarViewController ()
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIImageView *avatarImageView;
-@property (nonatomic, strong) UIButton *dismissButton;
-
 @end
 
 @implementation AvatarViewController
@@ -32,10 +30,10 @@
     _scrollView.showsVerticalScrollIndicator = NO;
     _scrollView.showsHorizontalScrollIndicator = NO;
     float minimumScale = 1.0;//This is the minimum scale, set it to whatever you want. 1.0 = default
-    _scrollView.maximumZoomScale = 4.0;
+    _scrollView.maximumZoomScale = 3.0;
     _scrollView.minimumZoomScale = minimumScale;
     _scrollView.zoomScale = minimumScale;
-    //  [_scrollView setContentMode:UIViewContentModeScaleAspectFit];
+    [_scrollView setContentMode:UIViewContentModeScaleAspectFit];
     _scrollView.decelerationRate = UIScrollViewDecelerationRateFast;
     [self.view addSubview:_scrollView];
     
@@ -58,11 +56,6 @@
     UISwipeGestureRecognizer *swipeGestureDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
     swipeGestureDown.direction = UISwipeGestureRecognizerDirectionDown;
     [_avatarImageView addGestureRecognizer:swipeGestureDown];
-    
-    _dismissButton = [UIButton new];
-    [_dismissButton addTarget:self action:@selector(dismissView) forControlEvents:UIControlEventTouchUpInside];
-    [_dismissButton setImage:[UIImage imageNamed:@"dismiss"] forState:UIControlStateNormal];
-    [self.view addSubview:_dismissButton];
     
 }
 
@@ -92,22 +85,11 @@
     frame.origin.x = kGeomMinX;
     frame.origin.y = (height(_scrollView) - frame.size.height) /2;
     _avatarImageView.frame = frame;
-    
-    frame = _dismissButton.frame;
-    frame.size.height = (IS_IPHONE)? kGeomButtonSize: kGeomButtonSizeBig;
-    frame.size.width = (IS_IPHONE)? kGeomButtonSize: kGeomButtonSizeBig;
-    frame.origin.x = kGeomSpace;
-    frame.origin.y = kGeomSpace + [UIApplication sharedApplication].statusBarFrame.size.height;
-    _dismissButton.frame = frame;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)dismissView {
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didSwipe:(UISwipeGestureRecognizer *)gesture {
