@@ -1,5 +1,5 @@
 //
-//  UILabel+Addition.h
+//  UIFont+Additions.h
 //  CoffeeMeetsBagel
 //
 //  Created by James Rochabrun on 11/18/16.
@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UILabel (Addition)
-+ (UILabel *)labelWithText:(NSString *)text withFont:(UIFont *)font inView:(UIView *)view;
+@interface UIFont (Additions)
+
++ (UIFont*)regularFont:(int)size;
++ (UIFont*)mediumFont:(int)size;
++ (UIFont *)lightFont:(int)size;
 @end

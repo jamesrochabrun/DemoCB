@@ -28,6 +28,7 @@
 		7B7928611DDFA7430033E291 /* DetailInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7928601DDFA7430033E291 /* DetailInfoView.m */; };
 		7B7928641DDFA9300033E291 /* UILabel+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7928631DDFA9300033E291 /* UILabel+Addition.m */; };
 		7B7928671DDFABC30033E291 /* UITextView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7928661DDFABC30033E291 /* UITextView+Additions.m */; };
+		7B79286A1DDFC1AC0033E291 /* UIFont+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7928691DDFC1AC0033E291 /* UIFont+Additions.m */; };
 		7B8C03DC1DDE30F00089FDC8 /* team.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B8C03DB1DDE30F00089FDC8 /* team.json */; };
 		7B8C03E01DDE38D50089FDC8 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C03DF1DDE38D50089FDC8 /* Common.m */; };
 		7B8C03E41DDE3BA80089FDC8 /* CommonUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C03E31DDE3BA80089FDC8 /* CommonUI.m */; };
@@ -94,6 +95,8 @@
 		7B7928631DDFA9300033E291 /* UILabel+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Addition.m"; sourceTree = "<group>"; };
 		7B7928651DDFABC30033E291 /* UITextView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Additions.h"; sourceTree = "<group>"; };
 		7B7928661DDFABC30033E291 /* UITextView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Additions.m"; sourceTree = "<group>"; };
+		7B7928681DDFC1AC0033E291 /* UIFont+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Additions.h"; sourceTree = "<group>"; };
+		7B7928691DDFC1AC0033E291 /* UIFont+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Additions.m"; sourceTree = "<group>"; };
 		7B8C03DB1DDE30F00089FDC8 /* team.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = team.json; sourceTree = "<group>"; };
 		7B8C03DE1DDE38D50089FDC8 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		7B8C03DF1DDE38D50089FDC8 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
@@ -291,6 +294,8 @@
 			children = (
 				7B7928651DDFABC30033E291 /* UITextView+Additions.h */,
 				7B7928661DDFABC30033E291 /* UITextView+Additions.m */,
+				7B7928681DDFC1AC0033E291 /* UIFont+Additions.h */,
+				7B7928691DDFC1AC0033E291 /* UIFont+Additions.m */,
 				7B7928621DDFA9300033E291 /* UILabel+Addition.h */,
 				7B7928631DDFA9300033E291 /* UILabel+Addition.m */,
 				7B8C03E81DDE42560089FDC8 /* UICollectionView+Addition.h */,
@@ -601,6 +606,7 @@
 				7B79285E1DDF7B310033E291 /* CBAvatarView.m in Sources */,
 				7B8C03E01DDE38D50089FDC8 /* Common.m in Sources */,
 				7B32751C1DDE0B3A00B9AC22 /* main.m in Sources */,
+				7B79286A1DDFC1AC0033E291 /* UIFont+Additions.m in Sources */,
 				7B7928611DDFA7430033E291 /* DetailInfoView.m in Sources */,
 				7B8C03F51DDE80CC0089FDC8 /* GridLayout.m in Sources */,
 				7B32755C1DDE0D4C00B9AC22 /* TeamFeedViewController.m in Sources */,

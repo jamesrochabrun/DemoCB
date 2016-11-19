@@ -10,4 +10,5 @@
 
 @interface UITextView (Additions)
 + (UITextView *)textViewWithText:(NSString *)text withFontSize:(int)size inView:(UIView *)view;
++ (void)textViewDidChange:(UITextView *)textView inView:(UIView *)view addTOriginY:(CGRect)rect;
 @end

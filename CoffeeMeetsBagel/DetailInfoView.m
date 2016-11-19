@@ -11,6 +11,8 @@
 #import "Common.h"
 #import "CommonUI.h"
 #import "CBTeamMember.h"
+#import "UIFont+Additions.h"
+
 
 @implementation DetailInfoView
 - (instancetype)init {
@@ -18,10 +20,8 @@
     self = [super init];
     if (self) {
         
-        _titleLabel = [UILabel labelWithText:@"" withSize:10 inView:self];
-        _titleLabel.textColor = [UIColor blackColor];
-        _nameLabel = [UILabel labelWithText:@"" withSize:18 inView:self];
-        _nameLabel.textColor = [UIColor blackColor];
+        _titleLabel = [UILabel labelWithText:@"" withFont:[UIFont regularFont:kGeomH2Size] inView:self];
+        _nameLabel = [UILabel labelWithText:@"" withFont:[UIFont regularFont:kGeomH1Size] inView:self];
         
     }
     return self;
@@ -30,20 +30,23 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    CGRect frame = _titleLabel.frame;
-    frame.size.height = kGeomLabelHeight;
-    frame.size.width = width(self) * 0.65;
-    frame.origin.x = (width(self) - frame.size.width) /2;
-    frame.origin.y = kGeomPaddingBig;
-    _titleLabel.frame = frame;
+    CGFloat fixedWidth = width(self) * 0.8;
+    CGSize newSize = [_titleLabel sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
+    CGRect newFrame = _titleLabel.frame;
+    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
+    newFrame.origin.x = (width(self) - fixedWidth) /2;
+    newFrame.origin.y = (height(self) - newFrame.size.height * 2) /2;
+    _titleLabel.frame = newFrame;
     
-    frame = _nameLabel.frame;
-    frame.size.height = kGeomLabelHeight;
-    frame.size.width = width(self) * 0.75;
-    frame.origin.x = (width(self) - frame.size.width) /2;
-    frame.origin.y = CGRectGetMaxY(_titleLabel.frame) + kGeomPaddingSmall;
-    _nameLabel.frame = frame;
+    newSize = [_nameLabel sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
+    newFrame = _nameLabel.frame;
+    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
+    newFrame.origin.x = (width(self) - fixedWidth) /2;
+    newFrame.origin.y = CGRectGetMaxY(_titleLabel.frame) + kGeomPaddingSmall;
+    _nameLabel.frame = newFrame;
 }
+
+
 
 - (void)setTeamMember:(CBTeamMember *)teamMember {
     

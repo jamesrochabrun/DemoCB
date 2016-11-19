@@ -13,6 +13,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "CBAvatarView.h"
 #import "DetailInfoView.h"
+#import "UITextView+Additions.h"
 
 @interface DetailViewController ()<UIScrollViewDelegate>
 @property (nonatomic, strong) UIButton *dismissButton;
@@ -20,6 +21,8 @@
 @property (nonatomic, strong) CBAvatarView *avatarView;
 @property (nonatomic, strong) DetailInfoView *detailView;
 @property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UITextView *bioTextView;
+@property (nonatomic, strong) UIImageView *footerView;
 
 @end
 
@@ -30,9 +33,10 @@
     // Do any additional setup after loading the view.
     _scrollView = [UIScrollView new];
     _scrollView.delegate = self;
-    [self.view addSubview:_scrollView];
-    _scrollView.backgroundColor = [UIColor redColor];
     _scrollView.showsVerticalScrollIndicator = NO;
+    _scrollView.scrollEnabled = YES;
+    [self.view addSubview:_scrollView];
+    //_scrollView.backgroundColor = UIColorRGB(kColorCoffeeBlue);
     
     _triangleView = [UIView new];
    // _triangleView.backgroundColor  = UIColorRGkColorCoffeeRedRed);
@@ -55,14 +59,20 @@
 
     _avatarView = [CBAvatarView new];
     _avatarView.teamMember = _teamMember;
-    _avatarView.backgroundColor = [UIColor grayColor];
     [_scrollView addSubview:_avatarView];
     
     _detailView = [DetailInfoView new];
     _detailView.teamMember = _teamMember;
-    _detailView.backgroundColor = [UIColor grayColor];
     _detailView.alpha = 0;
     [_scrollView addSubview:_detailView];
+    
+    _bioTextView = [UITextView textViewWithText:_teamMember.bio withFontSize:20 inView:_scrollView];
+    
+    _footerView = [UIImageView new];
+    _footerView.clipsToBounds = YES;
+    _footerView.image = [UIImage imageNamed:@"CBfooter"];
+    _footerView.contentMode = UIViewContentModeScaleAspectFill;
+    [_scrollView addSubview:_footerView];
     
     _dismissButton = [UIButton new];
     [_dismissButton addTarget:self action:@selector(dismissView) forControlEvents:UIControlEventTouchUpInside];
@@ -70,7 +80,6 @@
     _dismissButton.alpha = 0;
     [self.view addSubview:_dismissButton];
     
-    [self displayContent:_teamMember];
     
 }
 
@@ -78,18 +87,18 @@
     [super viewWillAppear:animated];
     
     _dismissButton.alpha =
+    _bioTextView.alpha =
+    _footerView.alpha =
     _detailView.alpha = 0;
 
     [UIView animateWithDuration:1 animations:^{
         _dismissButton.alpha =
+        _bioTextView.alpha =
+        _footerView.alpha =
         _detailView.alpha = 1;
     }];
 }
 
-- (void)displayContent:(CBTeamMember *)teamMember {
-    
-
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -109,34 +118,36 @@
     
     frame = _scrollView.frame;
     frame.origin.x = CGRectGetMinX(self.view.frame);
-    frame.origin.y = 20;
+    frame.origin.y = [UIApplication sharedApplication].statusBarFrame.size.height;
     frame.size.width = width(self.view);
     frame.size.height = height(self.view);
     _scrollView.frame = frame;
     
     frame = _avatarView.frame;
-    frame.size.height = width(self.view) * 0.5;
+    frame.size.height = width(self.view) * ((IS_IPHONE)? 0.6:0.5);
     frame.size.width = width(self.view);
-    frame.origin.x = 0;//(width(self.view) - frame.size.width) /2;
+    frame.origin.x = 0;
     frame.origin.y = 0;
     _avatarView.frame = frame;
     
     frame = _detailView.frame;
-    frame.size.height = 100;
+    frame.size.height = (IS_IPHONE)? 100:200;
     frame.size.width = width(self.view);
     frame.origin.x = 0;
     frame.origin.y = CGRectGetMaxY(_avatarView.frame);
     _detailView.frame = frame;
-
     
+    [UITextView textViewDidChange:_bioTextView inView:self.view addTOriginY:_detailView.frame];
     
-    
-    frame = _triangleView.frame;
-    frame.origin.x = 0;
-    frame.origin.y = 0;
-    frame.size.height = height(self.view);
+    frame = _footerView.frame;
+    frame.size.height = 150;
     frame.size.width = width(self.view);
-    _triangleView.frame = frame;
+    frame.origin.x = 0;
+    frame.origin.y = CGRectGetMaxY(_bioTextView.frame) + kGeomPaddingBig;
+    _footerView.frame = frame;
+    
+    _scrollView.contentSize = CGSizeMake(width(self.view), CGRectGetMaxY(_footerView.frame) + 200);
+
 
 }
 

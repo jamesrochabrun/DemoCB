@@ -30,7 +30,7 @@ static NSUInteger kColorCoffeeBlue = 0xFF0085da;
 static NSUInteger kColorCoffeeRed = 0xFFfe368e;
 static NSUInteger kColorCoffeePink = 0xFFf1906f;
 static const NSUInteger kColorGrayLight = 0xFFB2B2B2;
-static const NSUInteger kColorGrayMiddle = 0xFF53585F;
+static const NSUInteger kColorText = 0xFF53585F;
 static const NSUInteger kColorWhite = 0xFFFFFFFF;
 static const NSUInteger kColorBlack = 0xFF000000;
 static const NSUInteger kColorClear = 0x00000000;
@@ -43,10 +43,14 @@ static CGFloat kGeomHeightToolBar = 49.0;
 static CGFloat kGeomButtonSize = 40.0;
 static CGFloat kGeomButtonSizeBig = 70;
 static CGFloat kGeomSpace = 25;
-static CGFloat kGeomLabelHeight = 30;
-static CGFloat kGeomPaddingBig = 10;
-static CGFloat kGeomPaddingMedium = 7;
-static CGFloat kGeomPaddingSmall = 4;
+static CGFloat kGeomLabelHeight = 40;
+static CGFloat kGeomPaddingBig = 30;
+static CGFloat kGeomPaddingIpad = 50;
+static CGFloat kGeomPaddingMedium = 20;
+static CGFloat kGeomPaddingSmall = 10;
+static CGFloat kGeomH1Size = 23;
+static CGFloat kGeomH2Size = 16;
+static CGFloat kGeomH3Size = 14;
 //horizontal
 static CGFloat kGeomMinimunInterCellSpacing = 4.0;
 //vertical
