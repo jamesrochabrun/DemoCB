@@ -9,6 +9,9 @@
 #import "GridCollectionViewCell.h"
 #import "CBTeamMember.h"
 #import "UIImageView+AFNetworking.h"
+#import "CBAvatarView.h"
+#import "Common.h"
+
 
 
 @implementation GridCollectionViewCell
@@ -17,21 +20,28 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        _imageView = [UIImageView new];
-        _imageView.clipsToBounds = YES;
+//        _imageView = [UIImageView new];
+//        _imageView.clipsToBounds = YES;
+        _avatarView = [CBAvatarView new];
+        [self addSubview:_avatarView];
 
     }
     return self;
 }
 
 - (void)configureCellWithTeamData:(CBTeamMember *)teamMember {
-    
-    NSURL *urlStr = [NSURL URLWithString:teamMember.avatar];
-    [_imageView setImageWithURL:urlStr placeholderImage:[UIImage imageNamed:@""]];
-    __weak GridCollectionViewCell *weakSelf = self;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        weakSelf.backgroundView = _imageView;
-    });
+
+    _avatarView.teamMember = teamMember;
+}
+
+-(void)layoutSubviews {
+    [super layoutSubviews];
+    CGRect frame = _avatarView.frame;
+    frame.size.height = height(self);
+    frame.size.width = width(self);
+    frame.origin.x = 0;
+    frame.origin.y = 0;
+    _avatarView.frame = frame;
 }
 
 

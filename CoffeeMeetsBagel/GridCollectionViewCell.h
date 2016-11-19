@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @class CBTeamMember;
+@class CBAvatarView;
+
 @interface GridCollectionViewCell : UICollectionViewCell
 @property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) CBAvatarView *avatarView;
 - (void)configureCellWithTeamData:(CBTeamMember *)teamMember;
 
 @end

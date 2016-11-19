@@ -146,7 +146,7 @@
     frame.origin.y = CGRectGetMaxY(_bioTextView.frame) + kGeomPaddingBig;
     _footerView.frame = frame;
     
-    _scrollView.contentSize = CGSizeMake(width(self.view), CGRectGetMaxY(_footerView.frame) + 200);
+    _scrollView.contentSize = CGSizeMake(width(self.view), CGRectGetMaxY(_footerView.frame) + kGeomPaddingBig);
 
 
 }
