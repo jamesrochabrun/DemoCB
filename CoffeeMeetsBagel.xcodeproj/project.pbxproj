@@ -37,6 +37,7 @@
 		7B8C03EE1DDE79BD0089FDC8 /* CBAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C03ED1DDE79BD0089FDC8 /* CBAPI.m */; };
 		7B8C03F11DDE7CA40089FDC8 /* GridCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C03F01DDE7CA40089FDC8 /* GridCollectionViewCell.m */; };
 		7B8C03F51DDE80CC0089FDC8 /* GridLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C03F41DDE80CC0089FDC8 /* GridLayout.m */; };
+		7BA9D0251DE052A4001116FF /* AvatarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA9D0241DE052A4001116FF /* AvatarViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,8 @@
 		7B8C03F01DDE7CA40089FDC8 /* GridCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridCollectionViewCell.m; sourceTree = "<group>"; };
 		7B8C03F31DDE80CC0089FDC8 /* GridLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridLayout.h; sourceTree = "<group>"; };
 		7B8C03F41DDE80CC0089FDC8 /* GridLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridLayout.m; sourceTree = "<group>"; };
+		7BA9D0231DE052A4001116FF /* AvatarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarViewController.h; sourceTree = "<group>"; };
+		7BA9D0241DE052A4001116FF /* AvatarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvatarViewController.m; sourceTree = "<group>"; };
 		8DFD118E0F3CD8B729B2EA8E /* Pods-CoffeeMeetsBagelUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeeMeetsBagelUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoffeeMeetsBagelUITests/Pods-CoffeeMeetsBagelUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B2FE943B319F2926D98313FE /* libPods-CoffeeMeetsBagelTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CoffeeMeetsBagelTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE17BAB717A7AA6E3B953286 /* libPods-CoffeeMeetsBagelUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CoffeeMeetsBagelUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -241,6 +244,8 @@
 		7B3275581DDE0C8100B9AC22 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7BA9D0231DE052A4001116FF /* AvatarViewController.h */,
+				7BA9D0241DE052A4001116FF /* AvatarViewController.m */,
 				7B32755A1DDE0D4C00B9AC22 /* TeamFeedViewController.h */,
 				7B32755B1DDE0D4C00B9AC22 /* TeamFeedViewController.m */,
 				7B7928591DDF5A8F0033E291 /* DetailViewController.h */,
@@ -600,6 +605,7 @@
 				7B8C03E71DDE3D0B0089FDC8 /* CustomToolbar.m in Sources */,
 				7B32756F1DDE295C00B9AC22 /* CBTeamMember+CoreDataProperties.m in Sources */,
 				7B79285B1DDF5A8F0033E291 /* DetailViewController.m in Sources */,
+				7BA9D0251DE052A4001116FF /* AvatarViewController.m in Sources */,
 				7B8C03F11DDE7CA40089FDC8 /* GridCollectionViewCell.m in Sources */,
 				7B32755F1DDE0D7200B9AC22 /* CBCoredataStack.m in Sources */,
 				7B7928641DDFA9300033E291 /* UILabel+Addition.m in Sources */,

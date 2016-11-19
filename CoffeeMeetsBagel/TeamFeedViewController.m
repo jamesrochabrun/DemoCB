@@ -45,14 +45,14 @@
     //[self getDataFromJsonAndSaveInCoreData];
     [self fetchDataFromCoreData];
     
-        NSArray *fontFamilies = [UIFont familyNames];
-    
-        for (int i = 0; i < [fontFamilies count]; i++)
-        {
-            NSString *fontFamily = [fontFamilies objectAtIndex:i];
-            NSArray *fontNames = [UIFont fontNamesForFamilyName:[fontFamilies objectAtIndex:i]];
-            NSLog (@"%@: %@", fontFamily, fontNames);
-        }
+//        NSArray *fontFamilies = [UIFont familyNames];
+//    
+//        for (int i = 0; i < [fontFamilies count]; i++)
+//        {
+//            NSString *fontFamily = [fontFamilies objectAtIndex:i];
+//            NSArray *fontNames = [UIFont fontNamesForFamilyName:[fontFamilies objectAtIndex:i]];
+//            NSLog (@"%@: %@", fontFamily, fontNames);
+//        }
     
     
 }
@@ -131,6 +131,19 @@
     vc.transitioningDelegate = self;
     [self presentViewController:vc animated:YES completion:nil];
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @end

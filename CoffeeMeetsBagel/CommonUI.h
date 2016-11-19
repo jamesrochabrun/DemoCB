@@ -51,6 +51,7 @@ static CGFloat kGeomPaddingSmall = 10;
 static CGFloat kGeomH1Size = 23;
 static CGFloat kGeomH2Size = 16;
 static CGFloat kGeomH3Size = 14;
+static CGFloat kGeomMinX = 0;
 //horizontal
 static CGFloat kGeomMinimunInterCellSpacing = 4.0;
 //vertical

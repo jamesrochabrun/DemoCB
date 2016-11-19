@@ -4,11 +4,12 @@
         <attribute name="avatar" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="bio" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isBagel" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="teamID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CBTeamMember" positionX="-54" positionY="-9" width="128" height="135"/>
+        <element name="CBTeamMember" positionX="-54" positionY="-9" width="128" height="150"/>
     </elements>
 </model>

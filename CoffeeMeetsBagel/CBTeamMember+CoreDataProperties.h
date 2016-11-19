@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *lastName;
 @property (nullable, nonatomic, copy) NSString *avatar;
 @property (nullable, nonatomic, copy) NSString *teamID;
-
+@property (nullable, nonatomic, copy) NSNumber *isBagel;
 
 @property (nonatomic, readonly) NSString *sectionName;
 

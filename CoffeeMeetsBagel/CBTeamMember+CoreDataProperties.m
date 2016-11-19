@@ -16,7 +16,7 @@
 @implementation CBTeamMember (CoreDataProperties)
 
 + (NSFetchRequest<CBTeamMember *> *)fetchRequest {
-	return [[NSFetchRequest alloc] initWithEntityName:@"CBTeamMember"];
+	return [[NSFetchRequest alloc] initWithEntityName:kTeamMember];
 }
 
 @dynamic title;
@@ -25,6 +25,7 @@
 @dynamic lastName;
 @dynamic avatar;
 @dynamic teamID;
+@dynamic isBagel;
 
 - (NSString *)sectionName {
     
@@ -41,6 +42,7 @@
     teamMember.teamID = parseStringOrNullFromServer(memberData[kMemberID]);
     teamMember.avatar = parseStringOrNullFromServer(memberData[kMemberAvatar]);
     teamMember.title = parseStringOrNullFromServer(memberData[kMemberTitle]);
+    teamMember.isBagel = [NSNumber numberWithBool:NO];
     return teamMember;
     
 }

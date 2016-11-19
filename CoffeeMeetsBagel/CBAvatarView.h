@@ -9,11 +9,19 @@
 #import <UIKit/UIKit.h>
 
 @class CBTeamMember;
+@protocol CBAvatarDelegate <NSObject>
+@optional
+- (void)zoom:(UIGestureRecognizer *)gestureRecognizer;
+- (void)like;
+@end
+
+
 @interface CBAvatarView : UIView
 @property (nonatomic, strong) UIImageView *avatarImageview;
-@property (nonatomic, strong) UIImageView *logoView;
+@property (nonatomic, strong) UIButton *favoriteButton;
 @property (nonatomic, strong) UIImageView *backgroundWall;
 @property (nonatomic, strong) UIView *overLay;
 @property (nonatomic, strong) CBTeamMember *teamMember;
+@property (nonatomic, weak) id<CBAvatarDelegate>delegate;
 
 @end

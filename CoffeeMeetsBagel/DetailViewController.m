@@ -14,8 +14,10 @@
 #import "CBAvatarView.h"
 #import "DetailInfoView.h"
 #import "UITextView+Additions.h"
+#import "CBCoredataStack.h"
+#import "AvatarViewController.h"
 
-@interface DetailViewController ()<UIScrollViewDelegate>
+@interface DetailViewController ()<UIScrollViewDelegate, CBAvatarDelegate, UIViewControllerTransitioningDelegate>
 @property (nonatomic, strong) UIButton *dismissButton;
 @property (nonatomic, strong) UIView *triangleView;
 @property (nonatomic, strong) CBAvatarView *avatarView;
@@ -32,9 +34,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _scrollView = [UIScrollView new];
-    _scrollView.delegate = self;
-    _scrollView.showsVerticalScrollIndicator = NO;
     _scrollView.scrollEnabled = YES;
+    //_scrollView.clipsToBounds = YES;
     [self.view addSubview:_scrollView];
     //_scrollView.backgroundColor = UIColorRGB(kColorCoffeeBlue);
     
@@ -59,6 +60,7 @@
 
     _avatarView = [CBAvatarView new];
     _avatarView.teamMember = _teamMember;
+    _avatarView.delegate = self;
     [_scrollView addSubview:_avatarView];
     
     _detailView = [DetailInfoView new];
@@ -113,7 +115,7 @@
     frame.size.height = (IS_IPHONE)? kGeomButtonSize: kGeomButtonSizeBig;
     frame.size.width = (IS_IPHONE)? kGeomButtonSize: kGeomButtonSizeBig;
     frame.origin.x = kGeomSpace;
-    frame.origin.y = kGeomSpace;
+    frame.origin.y = kGeomSpace + [UIApplication sharedApplication].statusBarFrame.size.height;
     _dismissButton.frame = frame;
     
     frame = _scrollView.frame;
@@ -148,12 +150,65 @@
     
     _scrollView.contentSize = CGSizeMake(width(self.view), CGRectGetMaxY(_footerView.frame) + kGeomPaddingBig);
 
+}
 
+- (void)zoom:(UIGestureRecognizer *)gestureRecognizer {
+    
+    AvatarViewController *vc = [[AvatarViewController alloc] init];
+    vc.teamMember = _teamMember;
+    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    vc.transitioningDelegate = self;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 - (void)dismissView {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (void)like {
+    NSLog(@"like item");
+    
+    BOOL isFavorite = [self.teamMember.isBagel boolValue];
+    if (!isFavorite) {
+       // [self. setSelected:YES];
+        [self changingIsFavoriteToTrue];
+    } else {
+       // [self.isFavoriteButton setSelected:NO];
+        [self changingIsFavoriteToFalse];
+    }
+}
+
+- (void)changingIsFavoriteToTrue {
+    
+    BOOL myBool = YES;
+    self.teamMember.isBagel = [NSNumber numberWithBool:myBool];
+    
+    CBCoredataStack *coreDataStack = [CBCoredataStack defaultStack];
+    [coreDataStack saveContext];
+    
+    __weak DetailViewController *weakSelf = self;
+    UIAlertController *alertSaved = [UIAlertController alertControllerWithTitle:@"Added to favorite moments!" message:@"You can revisit this entry in your favorites section" preferredStyle:UIAlertControllerStyleAlert];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [weakSelf presentViewController:alertSaved animated:YES completion:nil];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [alertSaved dismissViewControllerAnimated:YES completion:nil];
+        });
+    });
+}
+
+- (void)changingIsFavoriteToFalse {
+    
+    BOOL myBool = NO;
+    self.teamMember.isBagel = [NSNumber numberWithBool:myBool];
+    
+    CBCoredataStack *coreDataStack = [CBCoredataStack defaultStack];
+    [coreDataStack saveContext];
+}
+
+
+
+
 
 
 
