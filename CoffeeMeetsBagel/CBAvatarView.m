@@ -51,7 +51,6 @@
         _likeIndicatorImageView.clipsToBounds = YES;
         _likeIndicatorImageView.userInteractionEnabled = YES;
         [self addSubview:_likeIndicatorImageView];
-        [Common addBorderTo:_likeIndicatorImageView withColor:kColorCoffeeRed width:1];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(teamMemberDidLiked:)
@@ -106,7 +105,7 @@
         
         _isBagel = [_teamMember.isBagel boolValue];
         if (_isBagel) {
-             [_likeIndicatorImageView setImage:[UIImage imageNamed:@"CBLogo.png"]];
+             [_likeIndicatorImageView setImage:[UIImage imageNamed:@"loveSelected.png"]];
             _likeIndicatorImageView.hidden = NO;
         } else {
             _likeIndicatorImageView.hidden = YES;
@@ -139,6 +138,7 @@
     _isBagel = [_teamMember.isBagel boolValue];
 
     if (_isBagel) {
+        [_likeIndicatorImageView setImage:[UIImage imageNamed:@"loveSelected.png"]];
         _likeIndicatorImageView.hidden = NO;
     } else {
         _likeIndicatorImageView.hidden = YES;

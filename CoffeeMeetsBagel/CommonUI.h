@@ -38,7 +38,7 @@ static const NSUInteger kColorYellow = 0xFFffc01b;
 
 
 //KGeomValues
-static CGFloat kGeomToolBarButtonSize = 40.0;
+static CGFloat kGeomToolBarButtonSize = 35.0;
 static CGFloat kGeomHeightToolBar = 49.0;
 static CGFloat kGeomButtonSize = 40.0;
 static CGFloat kGeomButtonSizeBig = 70;

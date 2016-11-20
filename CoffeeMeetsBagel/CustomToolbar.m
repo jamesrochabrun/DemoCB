@@ -22,12 +22,13 @@
         
         _coffeeButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, kGeomToolBarButtonSize, kGeomToolBarButtonSize)];
         [_coffeeButton addTarget:self action:@selector(goToHome) forControlEvents:UIControlEventTouchUpInside];
-        _coffeeButton.backgroundColor = [UIColor greenColor];
-        _coffeeBarButton = [[UIBarButtonItem alloc] initWithCustomView:_coffeeButton];
+        [_coffeeButton setImage:[UIImage imageNamed:@"teamSelected.png"] forState:UIControlStateSelected];
+        [_coffeeButton setImage:[UIImage imageNamed:@"team.png"] forState:UIControlStateNormal];        _coffeeBarButton = [[UIBarButtonItem alloc] initWithCustomView:_coffeeButton];
         
         _bagelButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, kGeomToolBarButtonSize, kGeomToolBarButtonSize)];
         [_bagelButton addTarget:self action:@selector(goToFavorites) forControlEvents:UIControlEventTouchUpInside];
-        _bagelButton.backgroundColor = [UIColor redColor];
+        [_bagelButton setImage:[UIImage imageNamed:@"loveSelected.png"] forState:UIControlStateSelected];
+        [_bagelButton setImage:[UIImage imageNamed:@"love.png"] forState:UIControlStateNormal];
         _bagelBarButton = [[UIBarButtonItem alloc] initWithCustomView:_bagelButton];
 
         _spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
@@ -52,17 +53,15 @@
 
 - (void)goToHome {
     [self.del goToHome];
-    _favoritesSelected = NO;
     [_coffeeButton setSelected:YES];
-    [_coffeeButton setSelected:NO];
+    [_bagelButton setSelected:NO];
 }
 
 - (void)goToFavorites {
     
     [self.del goToFavorites];
     [_bagelButton setSelected:YES];
-    [_bagelButton setSelected:NO];
-    _favoritesSelected = YES;
+    [_coffeeButton setSelected:NO];
 }
 
 @end
