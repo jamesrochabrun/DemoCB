@@ -20,6 +20,7 @@
 #import "SectionReusableView.h"
 #import "UILabel+Addition.h"
 #import "UIFont+Additions.h"
+#import "PlaceHolderView.h"
 
 
 @interface TeamFeedViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UIViewControllerTransitioningDelegate, CustomToolBarDelegate, NSFetchedResultsControllerDelegate>
@@ -30,7 +31,7 @@
 @property (nonatomic) GridLayout *gridLayout;
 @property BOOL shouldReloadCollectionView;
 @property (nonatomic, strong) SectionReusableView *sectionView;
-
+@property (nonatomic, strong) PlaceHolderView *placeHolder;
 
 @end
 
@@ -44,20 +45,26 @@
     if (self.fetchedResultsController.sections.count <= 0) {
         [self getDataFromJsonAndSaveInCoreData];
     }
+    
     _toolBar = [CustomToolbar new];
     [_toolBar.coffeeButton setSelected:YES];
     _shouldReloadCollectionView = NO;
     _toolBar.del = self;
     [self.view addSubview:_toolBar];
-        
+    
     _gridLayout = [GridLayout new];
     _gridCollectionView = [UICollectionView collectionViewWithLayout:_gridLayout inView:self.view delegate:self];
     [_gridCollectionView registerClass:[GridCollectionViewCell class] forCellWithReuseIdentifier:kReuseIdentifierGridCell];
     
+    _placeHolder = [PlaceHolderView new];
+    _placeHolder.hidden = YES;
+     [self.view addSubview:_placeHolder];
+    
     _sectionView = [SectionReusableView new];
     [_gridCollectionView registerClass:[SectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:kReusableHeader];
-    
 }
+
+
 - (void)getDataFromJsonAndSaveInCoreData {
     
     [CBAPI getDataFromPathWithSucces:^(id responseObject) {
@@ -78,6 +85,7 @@
     frame.size.height = CGRectGetMinY(_toolBar.frame) - frame.origin.y;
     frame.size.width = width(self.view);
     _gridCollectionView.frame = frame;
+    _placeHolder.frame = _gridCollectionView.frame;
     [_gridLayout invalidateLayout];
 }
 
@@ -85,6 +93,14 @@
     [super viewWillAppear:animated];
     [self.fetchedResultsController performFetch:nil];
     [self.gridCollectionView reloadData];
+    
+    if (_toolBar.favoritesSelected) {
+        if (self.fetchedResultsController.sections.count <= 0 ) {
+            _placeHolder.hidden = NO;
+        } else {
+            _placeHolder.hidden = YES;
+        }
+    }
 }
 
 - (NSFetchRequest *)entrylistfetchRequest {
@@ -110,6 +126,7 @@
 
 - (void)goToHome {
     
+    _placeHolder.hidden = YES;
     if (!_shouldReloadCollectionView) {
         return;
     }
@@ -120,6 +137,12 @@
 - (void)goToFavorites {
     [self fetchCoffeeOrBagelsAndReloadData:YES];
     _shouldReloadCollectionView = YES;
+    
+    if (self.fetchedResultsController.sections.count <= 0) {
+        _placeHolder.hidden = NO;
+    } else {
+        _placeHolder.hidden = YES;
+    }
 }
 
 - (void)fetchCoffeeOrBagelsAndReloadData:(BOOL)isBagel {

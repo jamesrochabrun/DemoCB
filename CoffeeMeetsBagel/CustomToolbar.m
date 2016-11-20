@@ -55,6 +55,7 @@
     [self.del goToHome];
     [_coffeeButton setSelected:YES];
     [_bagelButton setSelected:NO];
+    _favoritesSelected = NO;
 }
 
 - (void)goToFavorites {
@@ -62,6 +63,7 @@
     [self.del goToFavorites];
     [_bagelButton setSelected:YES];
     [_coffeeButton setSelected:NO];
+    _favoritesSelected = YES;
 }
 
 @end
