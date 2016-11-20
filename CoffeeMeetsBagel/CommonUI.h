@@ -52,6 +52,11 @@ static CGFloat kGeomH1Size = 23;
 static CGFloat kGeomH2Size = 16;
 static CGFloat kGeomH3Size = 14;
 static CGFloat kGeomMinX = 0;
+static CGFloat kGeomLikeButtonHeight = 40;
+static CGFloat kGeomLikeButtonHeightIpad = 75;
+static CGFloat kGeomDetailViewHeight = 80;
+static CGFloat kGeomDetailViewHeightIpad = 160;
+static CGFloat kGeomFooterHeight = 150;
 //horizontal
 static CGFloat kGeomMinimunInterCellSpacing = 4.0;
 //vertical

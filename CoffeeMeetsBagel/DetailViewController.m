@@ -16,16 +16,17 @@
 #import "UITextView+Additions.h"
 #import "CBCoredataStack.h"
 #import "AvatarViewController.h"
+#import "UIButton+Additions.h"
+#import "UIFont+Additions.h"
 
 @interface DetailViewController ()<UIScrollViewDelegate, CBAvatarDelegate, UIViewControllerTransitioningDelegate>
 @property (nonatomic, strong) UIButton *dismissButton;
-@property (nonatomic, strong) UIView *triangleView;
 @property (nonatomic, strong) CBAvatarView *avatarView;
 @property (nonatomic, strong) DetailInfoView *detailView;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UITextView *bioTextView;
 @property (nonatomic, strong) UIImageView *footerView;
-
+@property (nonatomic, strong) UIButton *likeButton;
 @end
 
 @implementation DetailViewController
@@ -35,33 +36,16 @@
     // Do any additional setup after loading the view.
     _scrollView = [UIScrollView new];
     _scrollView.scrollEnabled = YES;
-    //_scrollView.clipsToBounds = YES;
     [self.view addSubview:_scrollView];
-    //_scrollView.backgroundColor = UIColorRGB(kColorCoffeeBlue);
     
-    _triangleView = [UIView new];
-   // _triangleView.backgroundColor  = UIColorRGkColorCoffeeRedRed);
-    [self.view addSubview:_triangleView];
-    
-    UIBezierPath *path = [UIBezierPath new];
-    [path moveToPoint:(CGPoint){CGRectGetMaxX(self.view.frame), 0}];
-    [path addLineToPoint:(CGPoint){0, CGRectGetMaxY(self.view.frame)}];
-    [path addLineToPoint:(CGPoint){CGRectGetMaxX(self.view.frame), CGRectGetMaxY(self.view.frame)}];
-    [path addLineToPoint:(CGPoint){CGRectGetMaxX(self.view.frame), 0}];
-    
-    // Create a CAShapeLayer with this triangular path
-    // Same size as the original imageView
-    CAShapeLayer *mask = [CAShapeLayer new];
-    mask.frame = _triangleView.bounds;
-    mask.path = path.CGPath;
-    
-    // Mask the imageView's layer with this shape
-    _triangleView.layer.mask = mask;
-
     _avatarView = [CBAvatarView new];
     _avatarView.teamMember = _teamMember;
     _avatarView.delegate = self;
     [_scrollView addSubview:_avatarView];
+    
+    _likeButton = [UIButton buttonWithText:@"LIKE" withTitleColor:kColorCoffeeBlue withFont:[UIFont regularFont:kGeomH2Size] target:self action:@selector(like:) inView:self.view];
+    [Common addBorderTo:_likeButton withColor:kColorCoffeeBlue width:2];
+    [_scrollView addSubview:_likeButton];
     
     _detailView = [DetailInfoView new];
     _detailView.teamMember = _teamMember;
@@ -81,8 +65,6 @@
     [_dismissButton setImage:[UIImage imageNamed:@"dismiss"] forState:UIControlStateNormal];
     _dismissButton.alpha = 0;
     [self.view addSubview:_dismissButton];
-    
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -91,12 +73,14 @@
     _dismissButton.alpha =
     _bioTextView.alpha =
     _footerView.alpha =
+    _likeButton.alpha =
     _detailView.alpha = 0;
 
     [UIView animateWithDuration:1 animations:^{
         _dismissButton.alpha =
         _bioTextView.alpha =
         _footerView.alpha =
+        _likeButton.alpha =
         _detailView.alpha = 1;
     }];
 }
@@ -132,23 +116,30 @@
     frame.origin.y = 0;
     _avatarView.frame = frame;
     
+    frame = _likeButton.frame;
+    frame.size.height = (IS_IPHONE)? kGeomLikeButtonHeight:kGeomLikeButtonHeightIpad;
+    frame.size.width = width(self.view) * 0.5;
+    frame.origin.y = CGRectGetMaxY(_avatarView.frame) + ((IS_IPHONE)? kGeomPaddingBig:kGeomPaddingIpad);
+    frame.origin.x = (width(self.view) - frame.size.width) /2;
+    _likeButton.frame = frame;
+    
     frame = _detailView.frame;
-    frame.size.height = (IS_IPHONE)? 100:200;
+    frame.size.height = (IS_IPHONE)? kGeomDetailViewHeight:kGeomDetailViewHeightIpad;
     frame.size.width = width(self.view);
     frame.origin.x = 0;
-    frame.origin.y = CGRectGetMaxY(_avatarView.frame);
+    frame.origin.y = CGRectGetMaxY(_likeButton.frame);
     _detailView.frame = frame;
     
     [UITextView textViewDidChange:_bioTextView inView:self.view addTOriginY:_detailView.frame];
     
     frame = _footerView.frame;
-    frame.size.height = 150;
+    frame.size.height = kGeomFooterHeight;
     frame.size.width = width(self.view);
     frame.origin.x = 0;
     frame.origin.y = CGRectGetMaxY(_bioTextView.frame) + kGeomPaddingBig;
     _footerView.frame = frame;
     
-    _scrollView.contentSize = CGSizeMake(width(self.view), CGRectGetMaxY(_footerView.frame) + kGeomPaddingBig);
+    _scrollView.contentSize = CGSizeMake(width(self.view), CGRectGetMaxY(_footerView.frame) + kGeomPaddingMedium);
 
 }
 
@@ -165,7 +156,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)like {
+- (void)like:(id)sender {
     NSLog(@"like item");
     
     BOOL isFavorite = [self.teamMember.isBagel boolValue];

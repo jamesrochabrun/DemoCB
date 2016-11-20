@@ -12,13 +12,12 @@
 @protocol CBAvatarDelegate <NSObject>
 @optional
 - (void)zoom:(UIGestureRecognizer *)gestureRecognizer;
-- (void)like;
 @end
 
 
 @interface CBAvatarView : UIView
 @property (nonatomic, strong) UIImageView *avatarImageview;
-@property (nonatomic, strong) UIButton *favoriteButton;
+@property (nonatomic, strong) UIImageView *likeIndicatorImageView;
 @property (nonatomic, strong) UIImageView *backgroundWall;
 @property (nonatomic, strong) UIView *overLay;
 @property (nonatomic, strong) CBTeamMember *teamMember;

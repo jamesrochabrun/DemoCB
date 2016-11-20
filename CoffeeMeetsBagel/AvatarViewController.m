@@ -15,6 +15,7 @@
 @interface AvatarViewController ()
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIImageView *avatarImageView;
+@property (nonatomic, strong) UIButton *dismissButton;
 @end
 
 @implementation AvatarViewController
@@ -22,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     _scrollView = [UIScrollView new];
     _scrollView.bouncesZoom = YES;
     _scrollView.delegate = self;
@@ -57,6 +59,12 @@
     swipeGestureDown.direction = UISwipeGestureRecognizerDirectionDown;
     [_avatarImageView addGestureRecognizer:swipeGestureDown];
     
+    _dismissButton = [UIButton new];
+    [_dismissButton addTarget:self action:@selector(dismissView) forControlEvents:UIControlEventTouchUpInside];
+    [_dismissButton setImage:[UIImage imageNamed:@"dismiss"] forState:UIControlStateNormal];
+    _dismissButton.alpha = 0;
+    [self.view addSubview:_dismissButton];
+    
 }
 
 - (void)setTeamMember:(CBTeamMember *)teamMember {
@@ -72,7 +80,14 @@
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     
-    CGRect frame = _scrollView.frame;
+    CGRect frame = _dismissButton.frame;
+    frame.size.height = (IS_IPHONE)? kGeomButtonSize: kGeomButtonSizeBig;
+    frame.size.width = (IS_IPHONE)? kGeomButtonSize: kGeomButtonSizeBig;
+    frame.origin.x = kGeomSpace;
+    frame.origin.y = kGeomSpace + [UIApplication sharedApplication].statusBarFrame.size.height;
+    _dismissButton.frame = frame;
+    
+    frame = _scrollView.frame;
     frame.origin.x = kGeomMinX;
     frame.origin.y = [UIApplication sharedApplication].statusBarFrame.size.height;
     frame.size.height = height(self.view) - frame.origin.y;
@@ -92,31 +107,49 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    _dismissButton.alpha =
+    _avatarImageView.alpha = 0;
+    [UIView animateWithDuration:0.75 animations:^{
+        _dismissButton.alpha =
+        _avatarImageView.alpha = 1;
+    }];
+}
+
 - (void)didSwipe:(UISwipeGestureRecognizer *)gesture {
     
     if (gesture.direction == UISwipeGestureRecognizerDirectionUp) {
-        [UIView animateWithDuration:0.5 animations:^{
+        [UIView animateWithDuration:0.4 animations:^{
             
-            CGAffineTransform transform = CGAffineTransformMakeTranslation(0,CGRectGetMinY(_avatarImageView.frame) - 200);
+            CGAffineTransform transform = CGAffineTransformMakeTranslation(0,-200);
             [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
             _avatarImageView.transform = transform;
             _avatarImageView.alpha = 0;
+            _dismissButton.alpha = 0;
             
         } completion:^(BOOL finished) {
             [self dismissViewControllerAnimated:YES completion:nil];
         }];
     } else if (gesture.direction == UISwipeGestureRecognizerDirectionDown) {
     
-        [UIView animateWithDuration:0.5 animations:^{
+        [UIView animateWithDuration:0.4 animations:^{
             CGAffineTransform transform = CGAffineTransformMakeTranslation(0, 200);
             [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
             _avatarImageView.transform = transform;
             _avatarImageView.alpha = 0;
+            _dismissButton.alpha = 0;
+
             
         } completion:^(BOOL finished) {
             [self dismissViewControllerAnimated:YES completion:nil];
         }];
     }
+}
+
+- (void)dismissView {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer {

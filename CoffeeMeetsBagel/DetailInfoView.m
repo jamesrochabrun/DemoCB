@@ -22,7 +22,6 @@
         
         _titleLabel = [UILabel labelWithText:@"" withFont:[UIFont regularFont:kGeomH2Size] inView:self];
         _nameLabel = [UILabel labelWithText:@"" withFont:[UIFont regularFont:kGeomH1Size] inView:self];
-        
     }
     return self;
 }

@@ -19,10 +19,9 @@
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        
-//        _imageView = [UIImageView new];
-//        _imageView.clipsToBounds = YES;
+
         _avatarView = [CBAvatarView new];
+        _avatarView.userInteractionEnabled = NO;
         [self addSubview:_avatarView];
 
     }

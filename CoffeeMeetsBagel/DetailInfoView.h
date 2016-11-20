@@ -14,4 +14,5 @@
 @property (nonatomic, strong) UITextView *bioTextView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) CBTeamMember *teamMember;
+
 @end

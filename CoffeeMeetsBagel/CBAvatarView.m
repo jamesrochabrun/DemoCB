@@ -34,24 +34,23 @@
         _avatarImageview.contentMode = UIViewContentModeScaleAspectFit;
         _avatarImageview.clipsToBounds = YES;
         _avatarImageview.userInteractionEnabled = YES;
-       // _avatarImageview.alpha = 0;
-        _avatarImageview.autoresizingMask = ( UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin);
     
         //[Common addBorderTo:_avatarImageview withColor:kColorCoffeePink width:2];
         [self addSubview:_avatarImageview];
         
-        UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
-        [doubleTap setNumberOfTapsRequired:2];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
+        [tap setNumberOfTapsRequired:1];
         
         //Adding gesture recognizer
-        [_avatarImageview addGestureRecognizer:doubleTap];
+        [_avatarImageview addGestureRecognizer:tap];
         
-        _favoriteButton = [UIButton new];
-        _favoriteButton.layer.masksToBounds = YES;
-        _favoriteButton.alpha = 0;
-        [_favoriteButton addTarget:self action:@selector(like:) forControlEvents:UIControlEventTouchUpInside];
-        [Common addBorderTo:_favoriteButton withColor:kColorCoffeeRed width:1];
-        [self addSubview:_favoriteButton];
+        _likeIndicatorImageView = [UIImageView new];
+        _likeIndicatorImageView.layer.masksToBounds = YES;
+        _likeIndicatorImageView.contentMode = UIViewContentModeScaleAspectFit;
+        _likeIndicatorImageView.clipsToBounds = YES;
+        _likeIndicatorImageView.userInteractionEnabled = YES;
+        [self addSubview:_likeIndicatorImageView];
+        [Common addBorderTo:_likeIndicatorImageView withColor:kColorCoffeeRed width:1];
     }
     return self;
 }
@@ -78,13 +77,13 @@
     _avatarImageview.frame = frame;
     _avatarImageview.layer.cornerRadius = frame.size.width / 2;
     
-    frame = _favoriteButton.frame;
+    frame = _likeIndicatorImageView.frame;
     frame.size.height = height(_avatarImageview) * 0.3;
     frame.size.width = width(_avatarImageview) * 0.3;
     frame.origin.x = CGRectGetMaxX(_avatarImageview.frame) - frame.size.width;
     frame.origin.y = CGRectGetMaxY(_avatarImageview.frame) - frame.size.height;
-    _favoriteButton.frame = frame;
-    _favoriteButton.layer.cornerRadius = frame.size.width / 2;
+    _likeIndicatorImageView.frame = frame;
+    _likeIndicatorImageView.layer.cornerRadius = frame.size.width / 2;
     
     [self performAnimation];
 }
@@ -98,7 +97,7 @@
         NSURL *urlStr = [NSURL URLWithString:_teamMember.avatar];
         [weakSelf.avatarImageview setImageWithURL:urlStr placeholderImage:[UIImage imageNamed:@""]];
         weakSelf.backgroundWall.image = [UIImage imageNamed:@"wall.png"];
-        [_favoriteButton setImage:[UIImage imageNamed:@"CBLogo.png"] forState:UIControlStateNormal];
+        [_likeIndicatorImageView setImage:[UIImage imageNamed:@"CBLogo.png"]];
     });
     
 }
@@ -106,7 +105,7 @@
 - (void)performAnimation {
     
     _avatarImageview.transform = CGAffineTransformMakeScale(0,0);
-    _favoriteButton.transform = CGAffineTransformMakeScale(0,0);
+    _likeIndicatorImageView.transform = CGAffineTransformMakeScale(0,0);
     
     [UIView animateWithDuration:0.7 animations:^{
         _avatarImageview.alpha = 1;
@@ -114,19 +113,14 @@
     }];
     
     [UIView animateWithDuration:0.7 animations:^{
-        _favoriteButton.alpha = 1;
-        _favoriteButton.transform = CGAffineTransformMakeScale(1,1);
+        _likeIndicatorImageView.alpha = 1;
+        _likeIndicatorImageView.transform = CGAffineTransformMakeScale(1,1);
     }];
 }
 
 - (void)handleDoubleTap:(UIGestureRecognizer *)sender {
     [self.delegate zoom:sender];
 }
-
-- (void)like:(id)sender {
-    [self.delegate like];
-}
-
 
 
 

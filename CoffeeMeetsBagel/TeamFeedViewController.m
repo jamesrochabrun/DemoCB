@@ -39,9 +39,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     [self.fetchedResultsController performFetch:nil];
-
+    if (self.fetchedResultsController.sections.count <= 0) {
+        [self getDataFromJsonAndSaveInCoreData];
+    }
     _toolBar = [CustomToolbar new];
     [_toolBar.coffeeButton setSelected:YES];
     _shouldReloadCollectionView = NO;
@@ -54,19 +56,6 @@
     
     _sectionView = [SectionReusableView new];
     [_gridCollectionView registerClass:[SectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:kReusableHeader];
-
-    //[self getDataFromJsonAndSaveInCoreData];
-    //[self fetchDataFromCoreData];
-    
-//        NSArray *fontFamilies = [UIFont familyNames];
-//    
-//        for (int i = 0; i < [fontFamilies count]; i++)
-//        {
-//            NSString *fontFamily = [fontFamilies objectAtIndex:i];
-//            NSArray *fontNames = [UIFont fontNamesForFamilyName:[fontFamilies objectAtIndex:i]];
-//            NSLog (@"%@: %@", fontFamily, fontNames);
-//        }
-    
     
 }
 - (void)getDataFromJsonAndSaveInCoreData {

@@ -24,6 +24,7 @@
 		7B32756F1DDE295C00B9AC22 /* CBTeamMember+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B32756D1DDE295C00B9AC22 /* CBTeamMember+CoreDataProperties.m */; };
 		7B3275701DDE2BD500B9AC22 /* CoffeeMeetsBagel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7B3275261DDE0B3A00B9AC22 /* CoffeeMeetsBagel.xcdatamodeld */; };
 		7B60C5D21DE11BD200F80615 /* SectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B60C5D11DE11BD200F80615 /* SectionReusableView.m */; };
+		7B60C5D51DE2365600F80615 /* UIButton+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B60C5D41DE2365600F80615 /* UIButton+Additions.m */; };
 		7B79285B1DDF5A8F0033E291 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B79285A1DDF5A8F0033E291 /* DetailViewController.m */; };
 		7B79285E1DDF7B310033E291 /* CBAvatarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B79285D1DDF7B310033E291 /* CBAvatarView.m */; };
 		7B7928611DDFA7430033E291 /* DetailInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7928601DDFA7430033E291 /* DetailInfoView.m */; };
@@ -89,6 +90,8 @@
 		7B32756D1DDE295C00B9AC22 /* CBTeamMember+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBTeamMember+CoreDataProperties.m"; sourceTree = "<group>"; };
 		7B60C5D01DE11BD200F80615 /* SectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionReusableView.h; sourceTree = "<group>"; };
 		7B60C5D11DE11BD200F80615 /* SectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionReusableView.m; sourceTree = "<group>"; };
+		7B60C5D31DE2365600F80615 /* UIButton+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Additions.h"; sourceTree = "<group>"; };
+		7B60C5D41DE2365600F80615 /* UIButton+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Additions.m"; sourceTree = "<group>"; };
 		7B7928591DDF5A8F0033E291 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		7B79285A1DDF5A8F0033E291 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		7B79285C1DDF7B310033E291 /* CBAvatarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAvatarView.h; sourceTree = "<group>"; };
@@ -302,6 +305,8 @@
 		7B8C03EB1DDE425D0089FDC8 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				7B60C5D31DE2365600F80615 /* UIButton+Additions.h */,
+				7B60C5D41DE2365600F80615 /* UIButton+Additions.m */,
 				7B7928651DDFABC30033E291 /* UITextView+Additions.h */,
 				7B7928661DDFABC30033E291 /* UITextView+Additions.m */,
 				7B7928681DDFC1AC0033E291 /* UIFont+Additions.h */,
@@ -609,6 +614,7 @@
 				7B32751F1DDE0B3A00B9AC22 /* AppDelegate.m in Sources */,
 				7B8C03E71DDE3D0B0089FDC8 /* CustomToolbar.m in Sources */,
 				7B32756F1DDE295C00B9AC22 /* CBTeamMember+CoreDataProperties.m in Sources */,
+				7B60C5D51DE2365600F80615 /* UIButton+Additions.m in Sources */,
 				7B79285B1DDF5A8F0033E291 /* DetailViewController.m in Sources */,
 				7BA9D0251DE052A4001116FF /* AvatarViewController.m in Sources */,
 				7B8C03F11DDE7CA40089FDC8 /* GridCollectionViewCell.m in Sources */,
