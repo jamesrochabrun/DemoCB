@@ -22,5 +22,6 @@
 @property (nonatomic, strong) UIView *overLay;
 @property (nonatomic, strong) CBTeamMember *teamMember;
 @property (nonatomic, weak) id<CBAvatarDelegate>delegate;
+@property (nonatomic, assign) BOOL isBagel;
 
 @end

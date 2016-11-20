@@ -36,6 +36,7 @@
     // Do any additional setup after loading the view.
     _scrollView = [UIScrollView new];
     _scrollView.scrollEnabled = YES;
+    _scrollView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:_scrollView];
     
     _avatarView = [CBAvatarView new];
@@ -43,9 +44,20 @@
     _avatarView.delegate = self;
     [_scrollView addSubview:_avatarView];
     
-    _likeButton = [UIButton buttonWithText:@"LIKE" withTitleColor:kColorCoffeeBlue withFont:[UIFont regularFont:kGeomH2Size] target:self action:@selector(like:) inView:self.view];
+    _likeButton = [UIButton buttonWithText:@"LIKE" withTitleColor:kColorWhite withFont:[UIFont regularFont:kGeomH2Size] target:self action:@selector(like:) inView:self.view];
+    [_likeButton setTitleColor:UIColorRGB(kColorCoffeeBlue) forState:UIControlStateSelected];
+    [_likeButton setTitle:@"LIKED" forState:UIControlStateSelected];
     [Common addBorderTo:_likeButton withColor:kColorCoffeeBlue width:2];
     [_scrollView addSubview:_likeButton];
+    
+    BOOL isBagel = [_teamMember.isBagel boolValue];
+    if (isBagel) {
+        [_likeButton setSelected:YES];
+        _likeButton.backgroundColor = UIColorRGB(kColorWhite);
+    } else {
+        [_likeButton setSelected:NO];
+        _likeButton.backgroundColor = UIColorRGB(kColorCoffeeBlue);
+    }
     
     _detailView = [DetailInfoView new];
     _detailView.teamMember = _teamMember;
@@ -65,6 +77,7 @@
     [_dismissButton setImage:[UIImage imageNamed:@"dismiss"] forState:UIControlStateNormal];
     _dismissButton.alpha = 0;
     [self.view addSubview:_dismissButton];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -161,12 +174,17 @@
     
     BOOL isFavorite = [self.teamMember.isBagel boolValue];
     if (!isFavorite) {
-       // [self. setSelected:YES];
+        [self.likeButton setSelected:YES];
+        _likeButton.backgroundColor = UIColorRGB(kColorWhite);
         [self changingIsFavoriteToTrue];
     } else {
-       // [self.isFavoriteButton setSelected:NO];
+        [self.likeButton setSelected:NO];
+        _likeButton.backgroundColor = UIColorRGB(kColorCoffeeBlue);
         [self changingIsFavoriteToFalse];
     }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationLiked
+                                                        object:self];
 }
 
 - (void)changingIsFavoriteToTrue {
@@ -178,7 +196,7 @@
     [coreDataStack saveContext];
     
     __weak DetailViewController *weakSelf = self;
-    UIAlertController *alertSaved = [UIAlertController alertControllerWithTitle:@"Added to favorite moments!" message:@"You can revisit this entry in your favorites section" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertSaved = [UIAlertController alertControllerWithTitle:@"test" message:@"test" preferredStyle:UIAlertControllerStyleAlert];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [weakSelf presentViewController:alertSaved animated:YES completion:nil];
@@ -192,7 +210,6 @@
     
     BOOL myBool = NO;
     self.teamMember.isBagel = [NSNumber numberWithBool:myBool];
-    
     CBCoredataStack *coreDataStack = [CBCoredataStack defaultStack];
     [coreDataStack saveContext];
 }

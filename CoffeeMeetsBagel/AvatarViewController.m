@@ -73,7 +73,7 @@
     NSURL *urlStr = [NSURL URLWithString:teamMember.avatar];
     __weak AvatarViewController *weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        [weakSelf.avatarImageView setImageWithURL:urlStr placeholderImage:[UIImage imageNamed:@""]];
+        [weakSelf.avatarImageView setImageWithURL:urlStr placeholderImage:[UIImage imageNamed:@"CBLogo.png"]];
     });
 }
 

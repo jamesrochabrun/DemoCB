@@ -31,6 +31,7 @@
 - (void)configureCellWithTeamData:(CBTeamMember *)teamMember {
 
     _avatarView.teamMember = teamMember;
+    
 }
 
 -(void)layoutSubviews {

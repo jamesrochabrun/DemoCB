@@ -34,6 +34,7 @@
         _avatarImageview.contentMode = UIViewContentModeScaleAspectFit;
         _avatarImageview.clipsToBounds = YES;
         _avatarImageview.userInteractionEnabled = YES;
+        _avatarImageview.backgroundColor = UIColorRGB(kColorWhite);
     
         //[Common addBorderTo:_avatarImageview withColor:kColorCoffeePink width:2];
         [self addSubview:_avatarImageview];
@@ -51,6 +52,11 @@
         _likeIndicatorImageView.userInteractionEnabled = YES;
         [self addSubview:_likeIndicatorImageView];
         [Common addBorderTo:_likeIndicatorImageView withColor:kColorCoffeeRed width:1];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(teamMemberDidLiked:)
+                                                     name:kNotificationLiked
+                                                   object:nil];
     }
     return self;
 }
@@ -95,11 +101,17 @@
     __weak CBAvatarView *weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         NSURL *urlStr = [NSURL URLWithString:_teamMember.avatar];
-        [weakSelf.avatarImageview setImageWithURL:urlStr placeholderImage:[UIImage imageNamed:@""]];
+        [weakSelf.avatarImageview setImageWithURL:urlStr placeholderImage:[UIImage imageNamed:@"CBLogo.png"]];
         weakSelf.backgroundWall.image = [UIImage imageNamed:@"wall.png"];
-        [_likeIndicatorImageView setImage:[UIImage imageNamed:@"CBLogo.png"]];
+        
+        _isBagel = [_teamMember.isBagel boolValue];
+        if (_isBagel) {
+             [_likeIndicatorImageView setImage:[UIImage imageNamed:@"CBLogo.png"]];
+            _likeIndicatorImageView.hidden = NO;
+        } else {
+            _likeIndicatorImageView.hidden = YES;
+        }
     });
-    
 }
 
 - (void)performAnimation {
@@ -120,6 +132,21 @@
 
 - (void)handleDoubleTap:(UIGestureRecognizer *)sender {
     [self.delegate zoom:sender];
+}
+
+- (void)teamMemberDidLiked:(NSNotification *)notification {
+    
+    _isBagel = [_teamMember.isBagel boolValue];
+
+    if (_isBagel) {
+        _likeIndicatorImageView.hidden = NO;
+    } else {
+        _likeIndicatorImageView.hidden = YES;
+    }
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kNotificationLiked object:nil];
 }
 
 
