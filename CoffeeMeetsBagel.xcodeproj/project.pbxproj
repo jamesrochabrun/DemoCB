@@ -23,6 +23,7 @@
 		7B32756E1DDE295C00B9AC22 /* CBTeamMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B32756B1DDE295C00B9AC22 /* CBTeamMember.m */; };
 		7B32756F1DDE295C00B9AC22 /* CBTeamMember+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B32756D1DDE295C00B9AC22 /* CBTeamMember+CoreDataProperties.m */; };
 		7B3275701DDE2BD500B9AC22 /* CoffeeMeetsBagel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7B3275261DDE0B3A00B9AC22 /* CoffeeMeetsBagel.xcdatamodeld */; };
+		7B60C5D21DE11BD200F80615 /* SectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B60C5D11DE11BD200F80615 /* SectionReusableView.m */; };
 		7B79285B1DDF5A8F0033E291 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B79285A1DDF5A8F0033E291 /* DetailViewController.m */; };
 		7B79285E1DDF7B310033E291 /* CBAvatarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B79285D1DDF7B310033E291 /* CBAvatarView.m */; };
 		7B7928611DDFA7430033E291 /* DetailInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7928601DDFA7430033E291 /* DetailInfoView.m */; };
@@ -86,6 +87,8 @@
 		7B32756B1DDE295C00B9AC22 /* CBTeamMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTeamMember.m; sourceTree = "<group>"; };
 		7B32756C1DDE295C00B9AC22 /* CBTeamMember+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBTeamMember+CoreDataProperties.h"; sourceTree = "<group>"; };
 		7B32756D1DDE295C00B9AC22 /* CBTeamMember+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBTeamMember+CoreDataProperties.m"; sourceTree = "<group>"; };
+		7B60C5D01DE11BD200F80615 /* SectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionReusableView.h; sourceTree = "<group>"; };
+		7B60C5D11DE11BD200F80615 /* SectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionReusableView.m; sourceTree = "<group>"; };
 		7B7928591DDF5A8F0033E291 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		7B79285A1DDF5A8F0033E291 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		7B79285C1DDF7B310033E291 /* CBAvatarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAvatarView.h; sourceTree = "<group>"; };
@@ -230,6 +233,8 @@
 		7B3275571DDE0C7A00B9AC22 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7B60C5D01DE11BD200F80615 /* SectionReusableView.h */,
+				7B60C5D11DE11BD200F80615 /* SectionReusableView.m */,
 				7B8C03F21DDE7CA90089FDC8 /* Cells */,
 				7B79285F1DDFA7430033E291 /* DetailInfoView.h */,
 				7B7928601DDFA7430033E291 /* DetailInfoView.m */,
@@ -612,6 +617,7 @@
 				7B79285E1DDF7B310033E291 /* CBAvatarView.m in Sources */,
 				7B8C03E01DDE38D50089FDC8 /* Common.m in Sources */,
 				7B32751C1DDE0B3A00B9AC22 /* main.m in Sources */,
+				7B60C5D21DE11BD200F80615 /* SectionReusableView.m in Sources */,
 				7B79286A1DDFC1AC0033E291 /* UIFont+Additions.m in Sources */,
 				7B7928611DDFA7430033E291 /* DetailInfoView.m in Sources */,
 				7B8C03F51DDE80CC0089FDC8 /* GridLayout.m in Sources */,

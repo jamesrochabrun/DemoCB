@@ -17,6 +17,7 @@
 #import "GridLayout.h"
 #import "GridCollectionViewCell.h"
 #import "DetailViewController.h"
+#import "SectionReusableView.h"
 
 
 @interface TeamFeedViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UIViewControllerTransitioningDelegate, CustomToolBarDelegate, NSFetchedResultsControllerDelegate>
@@ -26,6 +27,7 @@
 @property (nonatomic, strong) UICollectionView *gridCollectionView;
 @property (nonatomic) GridLayout *gridLayout;
 @property BOOL shouldReloadCollectionView;
+@property (nonatomic, strong) SectionReusableView *sectionView;
 
 
 @end
@@ -47,6 +49,9 @@
     _gridLayout = [GridLayout new];
     _gridCollectionView = [UICollectionView collectionViewWithLayout:_gridLayout inView:self.view delegate:self];
     [_gridCollectionView registerClass:[GridCollectionViewCell class] forCellWithReuseIdentifier:kReuseIdentifierGridCell];
+    
+    _sectionView = [SectionReusableView new];
+    [_gridCollectionView registerClass:[SectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
 
     //[self getDataFromJsonAndSaveInCoreData];
     //[self fetchDataFromCoreData];
@@ -89,7 +94,6 @@
     [super viewWillAppear:animated];
     [self.fetchedResultsController performFetch:nil];
     [self.gridCollectionView reloadData];
-
 }
 
 - (NSFetchRequest *)entrylistfetchRequest {
@@ -111,44 +115,6 @@
     _fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:fetchRequest managedObjectContext:coreDataStack.managedObjectContext sectionNameKeyPath:@"sectionName" cacheName:nil];
     _fetchedResultsController.delegate = self;
     return _fetchedResultsController;
-}
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
-    return [sectionInfo numberOfObjects];
-}
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return self.fetchedResultsController.sections.count;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    GridCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kReuseIdentifierGridCell forIndexPath:indexPath];
-    CBTeamMember *teamMember = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    [cell configureCellWithTeamData:teamMember];
-    return cell;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-
-    CBTeamMember *teamMember = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSLog(@"the name is %@", teamMember.firstName);
-    [self showExpandedProfile:teamMember];
-}
-
-- (void)showExpandedProfile:(CBTeamMember *)teamMember {
-    
-    DetailViewController *vc = [[DetailViewController alloc] init];
-    vc.teamMember = teamMember;
-    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    vc.transitioningDelegate = self;
-    [self presentViewController:vc animated:YES completion:nil];
 }
 
 - (void)goToHome {
@@ -183,6 +149,73 @@
     dispatch_async(dispatch_get_main_queue(), ^{
     [weakSelf.gridCollectionView reloadData];
     });
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+    return [sectionInfo numberOfObjects];
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return self.fetchedResultsController.sections.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    GridCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kReuseIdentifierGridCell forIndexPath:indexPath];
+    CBTeamMember *teamMember = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [cell configureCellWithTeamData:teamMember];
+    return cell;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CBTeamMember *teamMember = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSLog(@"the name is %@", teamMember.firstName);
+    [self showExpandedProfile:teamMember];
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    
+    UICollectionReusableView *reusableview = nil;
+    
+    if (kind == UICollectionElementKindSectionHeader) {
+        SectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header" forIndexPath:indexPath];
+       // headerView.backgroundColor = [UIColor redColor];
+        
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:indexPath.section];
+        NSString *sectionName = [sectionInfo name];
+
+        UILabel *label=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        label.text= sectionName;
+        _label.backgroundColor = [UIColor redColor];
+        [headerView addSubview:label];
+        
+        
+        reusableview = headerView;
+    }
+//
+    
+    return reusableview;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    CGSize headerSize = CGSizeMake(320, 44);
+    return headerSize;
+}
+
+- (void)showExpandedProfile:(CBTeamMember *)teamMember {
+    
+    DetailViewController *vc = [[DetailViewController alloc] init];
+    vc.teamMember = teamMember;
+    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    vc.transitioningDelegate = self;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 @end

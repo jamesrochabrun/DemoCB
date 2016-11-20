@@ -29,7 +29,7 @@
 
 - (NSString *)sectionName {
     
-    NSString *str = @"section";
+    NSString *str = @"Meet the team";
     return str;
 }
 
