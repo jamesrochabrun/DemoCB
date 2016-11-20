@@ -13,7 +13,6 @@
 
 + (UIFont *)lightFont:(int)size {
     return [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:(IS_IPHONE)? size:size*2];
-
 }
 
 + (UIFont*)regularFont:(int)size {

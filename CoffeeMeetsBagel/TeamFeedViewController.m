@@ -18,6 +18,8 @@
 #import "GridCollectionViewCell.h"
 #import "DetailViewController.h"
 #import "SectionReusableView.h"
+#import "UILabel+Addition.h"
+#import "UIFont+Additions.h"
 
 
 @interface TeamFeedViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UIViewControllerTransitioningDelegate, CustomToolBarDelegate, NSFetchedResultsControllerDelegate>
@@ -51,7 +53,7 @@
     [_gridCollectionView registerClass:[GridCollectionViewCell class] forCellWithReuseIdentifier:kReuseIdentifierGridCell];
     
     _sectionView = [SectionReusableView new];
-    [_gridCollectionView registerClass:[SectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
+    [_gridCollectionView registerClass:[SectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:kReusableHeader];
 
     //[self getDataFromJsonAndSaveInCoreData];
     //[self fetchDataFromCoreData];
@@ -183,23 +185,16 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     
     UICollectionReusableView *reusableview = nil;
-    
     if (kind == UICollectionElementKindSectionHeader) {
-        SectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header" forIndexPath:indexPath];
-       // headerView.backgroundColor = [UIColor redColor];
+        SectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:kReusableHeader forIndexPath:indexPath];
+        headerView.backgroundColor = UIColorRGB(kColorCoffeeBlue);
         
         id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:indexPath.section];
         NSString *sectionName = [sectionInfo name];
-
-        UILabel *label=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-        label.text= sectionName;
-        _label.backgroundColor = [UIColor redColor];
-        [headerView addSubview:label];
-        
-        
+        CGRect frame = CGRectMake(0, 0, width(self.view), kGeomLabelHeight);
+        [UILabel labelWithRect:frame withFont:[UIFont regularFont:kGeomH1Size] withText:sectionName inView:headerView];
         reusableview = headerView;
     }
-//
     
     return reusableview;
 }

@@ -21,3 +21,4 @@ NSString *const kMemberAvatar = @"avatar";
 NSString *const kMemberTitle = @"title";
 NSString *const kFileName = @"team";
 NSString *const kTypeFile = @"json";
+NSString *const kReusableHeader = @"header";

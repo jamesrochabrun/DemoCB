@@ -24,4 +24,19 @@
     return label;
 }
 
++ (UILabel *)labelWithRect:(CGRect)rect withFont:(UIFont *)font withText:(NSString *)text inView:(UIView *)view {
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:rect];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.numberOfLines = 0;
+    label.lineBreakMode = NSLineBreakByWordWrapping;
+    [label setFont:font];
+    [label setTextColor:UIColorRGB(kColorWhite)];
+    label.text = text;
+    [view addSubview:label];
+    label.center = view.center;
+    return label;
+
+}
+
 @end

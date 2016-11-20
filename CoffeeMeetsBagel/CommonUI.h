@@ -68,6 +68,8 @@ extern NSString *const kMemberAvatar;
 extern NSString *const kMemberTitle;
 extern NSString *const kFileName;
 extern NSString *const kTypeFile;
+extern NSString *const kReusableHeader;
+
 
 
 
