@@ -17,6 +17,7 @@
     label.textAlignment = NSTextAlignmentCenter;
     label.numberOfLines = 0;
     label.lineBreakMode = NSLineBreakByWordWrapping;
+    label.adjustsFontSizeToFitWidth = YES;
     [label setFont:font];
     [label setTextColor:UIColorRGB(kColorText)];
     label.text = text;

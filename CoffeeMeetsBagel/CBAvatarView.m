@@ -70,11 +70,19 @@
     _overLay.frame = _backgroundWall.frame;
     
     //change the multiplier to adjust the size dinamically
-    CGFloat avatarSize = height(self) * 0.8;
+    if (_isCellSubview) {
+        _avatarSize = height(self) * 0.7;
+    } else {
+        if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
+            _avatarSize = height(self) * 0.4;
+        } else if (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation)) {
+            _avatarSize = height(self) * 0.7;
+        }
+    }
     
     frame = _avatarImageview.frame;
-    frame.size.height = avatarSize;
-    frame.size.width = avatarSize;
+    frame.size.height = _avatarSize;
+    frame.size.width = _avatarSize;
     frame.origin.x = (width(self) - frame.size.width) /2;
     frame.origin.y = (height(self) - frame.size.height) /2;
     _avatarImageview.frame = frame;

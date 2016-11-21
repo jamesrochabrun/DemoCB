@@ -23,5 +23,7 @@
 @property (nonatomic, strong) CBTeamMember *teamMember;
 @property (nonatomic, weak) id<CBAvatarDelegate>delegate;
 @property (nonatomic, assign) BOOL isBagel;
+@property (nonatomic) CGFloat avatarSize;
+@property (nonatomic, assign) BOOL isCellSubview;
 
 @end

@@ -22,6 +22,7 @@
 
         _avatarView = [CBAvatarView new];
         _avatarView.userInteractionEnabled = NO;
+        _avatarView.isCellSubview = YES;
         [self addSubview:_avatarView];
 
     }

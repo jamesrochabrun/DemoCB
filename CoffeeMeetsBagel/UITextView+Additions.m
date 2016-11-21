@@ -21,6 +21,7 @@
     textView.font = [UIFont regularFont:kGeomH3Size];
     textView.textColor = UIColorRGB(kColorText);
     textView.userInteractionEnabled = NO;
+    textView.editable = NO;
     textView.text = text;
     [view addSubview:textView];
     return textView;

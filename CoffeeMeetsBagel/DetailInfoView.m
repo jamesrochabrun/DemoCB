@@ -45,8 +45,6 @@
     _nameLabel.frame = newFrame;
 }
 
-
-
 - (void)setTeamMember:(CBTeamMember *)teamMember {
     
     _teamMember = teamMember;
