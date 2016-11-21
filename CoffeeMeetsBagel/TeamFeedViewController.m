@@ -151,7 +151,7 @@
     CBCoredataStack *coreDataStack = [CBCoredataStack  defaultStack];
     
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:kTeamMember];
-    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:kSectionName ascending:YES]];
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:kSortDescriptorFirstName ascending:YES]];
     
     if (isBagel) {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:kPredicateIsBagel, YES];
