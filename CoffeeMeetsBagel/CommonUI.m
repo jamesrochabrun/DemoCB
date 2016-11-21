@@ -23,3 +23,7 @@ NSString *const kFileName = @"team";
 NSString *const kTypeFile = @"json";
 NSString *const kReusableHeader = @"header";
 NSString *const kNotificationLiked = @"notificationLiked";
+NSString *const kSortDescriptorFirstName = @"firstName";
+NSString *const kSectionName = @"sectionName";
+NSString *const kPredicateIsBagel = @"isBagel == %d";
+

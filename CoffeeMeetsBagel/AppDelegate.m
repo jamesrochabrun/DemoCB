@@ -26,7 +26,7 @@
     /////////////////////
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    [Common setStatusBarBackgroundColor:UIColorRGB(kColorYellow)];
+    [Common setStatusBarBackgroundColor:UIColorRGB(kColorCoffeeBlue)];
     return YES;
 }
 

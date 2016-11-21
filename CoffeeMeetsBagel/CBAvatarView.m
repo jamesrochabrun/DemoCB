@@ -121,12 +121,10 @@
     [UIView animateWithDuration:0.7 animations:^{
         _avatarImageview.alpha = 1;
         _avatarImageview.transform = CGAffineTransformMakeScale(1,1);
-    }];
-    
-    [UIView animateWithDuration:0.7 animations:^{
         _likeIndicatorImageView.alpha = 1;
         _likeIndicatorImageView.transform = CGAffineTransformMakeScale(1,1);
     }];
+
 }
 
 - (void)handleDoubleTap:(UIGestureRecognizer *)sender {

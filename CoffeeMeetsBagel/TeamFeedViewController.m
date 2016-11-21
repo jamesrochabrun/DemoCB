@@ -105,8 +105,8 @@
 
 - (NSFetchRequest *)entrylistfetchRequest {
     
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"CBTeamMember"];
-    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES]];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:kTeamMember];
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:kSortDescriptorFirstName ascending:YES]];
     return  fetchRequest;
 }
 
@@ -119,7 +119,7 @@
     CBCoredataStack *coreDataStack = [CBCoredataStack  defaultStack];
     NSFetchRequest *fetchRequest = [self entrylistfetchRequest];
     
-    _fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:fetchRequest managedObjectContext:coreDataStack.managedObjectContext sectionNameKeyPath:@"sectionName" cacheName:nil];
+    _fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:fetchRequest managedObjectContext:coreDataStack.managedObjectContext sectionNameKeyPath:kSectionName cacheName:nil];
     _fetchedResultsController.delegate = self;
     return _fetchedResultsController;
 }
@@ -135,6 +135,7 @@
 }
 
 - (void)goToFavorites {
+    
     [self fetchCoffeeOrBagelsAndReloadData:YES];
     _shouldReloadCollectionView = YES;
     
@@ -149,14 +150,14 @@
     
     CBCoredataStack *coreDataStack = [CBCoredataStack  defaultStack];
     
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"CBTeamMember"];
-    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES]];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:kTeamMember];
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:kSectionName ascending:YES]];
     
     if (isBagel) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isBagel == %d", YES];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:kPredicateIsBagel, YES];
         [fetchRequest setPredicate:predicate];
     }
-    _fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:fetchRequest managedObjectContext:coreDataStack.managedObjectContext sectionNameKeyPath:@"sectionName" cacheName:nil];
+    _fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:fetchRequest managedObjectContext:coreDataStack.managedObjectContext sectionNameKeyPath:kSectionName cacheName:nil];
     
     [self.fetchedResultsController performFetch:nil];
     __weak TeamFeedViewController *weakSelf = self;
@@ -203,17 +204,11 @@
         
         id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:indexPath.section];
         NSString *sectionName = [sectionInfo name];
-        CGRect frame = CGRectMake(0, 0, width(self.view), kGeomLabelHeight);
-        [UILabel labelWithRect:frame withFont:[UIFont regularFont:kGeomH1Size] withText:sectionName inView:headerView];
+        [headerView configureHeaderWithTitle:sectionName];
         reusableview = headerView;
     }
     
     return reusableview;
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    CGSize headerSize = CGSizeMake(320, 44);
-    return headerSize;
 }
 
 - (void)showExpandedProfile:(CBTeamMember *)teamMember {

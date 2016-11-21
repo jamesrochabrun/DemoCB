@@ -98,7 +98,6 @@
     }];
 }
 
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -152,7 +151,7 @@
     frame.origin.y = CGRectGetMaxY(_bioTextView.frame) + kGeomPaddingBig;
     _footerView.frame = frame;
     
-    _scrollView.contentSize = CGSizeMake(width(self.view), CGRectGetMaxY(_footerView.frame) + kGeomPaddingMedium);
+    _scrollView.contentSize = CGSizeMake(width(self.view), CGRectGetMaxY(_footerView.frame) + kGeomPaddingBig);
 
 }
 
@@ -170,7 +169,6 @@
 }
 
 - (void)like:(id)sender {
-    NSLog(@"like item");
     
     BOOL isFavorite = [self.teamMember.isBagel boolValue];
     if (!isFavorite) {

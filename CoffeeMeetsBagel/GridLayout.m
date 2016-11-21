@@ -19,8 +19,7 @@
         self.minimumLineSpacing = kGeomMinimunInterCellSpacing;
         self.minimumInteritemSpacing = kGeomMinimunInterCellSpacing;
         self.scrollDirection = UICollectionViewScrollDirectionVertical;
-        //.self.sectionInset = UIEdgeInsetsMake(20, 0, 20, 0);
-        //self.headerReferenceSize = CGSizeMake(width(self.collectionView), 50);
+        self.headerReferenceSize = CGSizeMake(width(self.collectionView), ((IS_IPHONE)? kGeomHeaderViewHeight:kGeomHeaderViewHeightIpad));
     }
     return self;
 }

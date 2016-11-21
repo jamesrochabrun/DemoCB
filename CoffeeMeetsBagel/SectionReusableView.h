@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SectionReusableView : UICollectionReusableView
-
+@property (nonatomic, strong) UILabel *label;
+- (void)configureHeaderWithTitle:(NSString *)title;
 @end

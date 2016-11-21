@@ -57,6 +57,8 @@ static CGFloat kGeomLikeButtonHeightIpad = 75;
 static CGFloat kGeomDetailViewHeight = 80;
 static CGFloat kGeomDetailViewHeightIpad = 160;
 static CGFloat kGeomFooterHeight = 150;
+static CGFloat kGeomHeaderViewHeight = 50;
+static CGFloat kGeomHeaderViewHeightIpad = 100;
 //horizontal
 static CGFloat kGeomMinimunInterCellSpacing = 4.0;
 //vertical
@@ -75,7 +77,9 @@ extern NSString *const kFileName;
 extern NSString *const kTypeFile;
 extern NSString *const kReusableHeader;
 extern NSString *const kNotificationLiked;
-
+extern NSString *const kSortDescriptorFirstName;
+extern NSString *const kSectionName;
+extern NSString *const kPredicateIsBagel;
 
 
 
