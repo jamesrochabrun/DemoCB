@@ -60,7 +60,7 @@ static CGFloat kGeomFooterHeight = 150;
 static CGFloat kGeomHeaderViewHeight = 50;
 static CGFloat kGeomHeaderViewHeightIpad = 100;
 //horizontal
-static CGFloat kGeomMinimunInterCellSpacing = 4.0;
+static CGFloat kGeomMinimunInterCellSpacing = 3.0;
 //vertical
 
 //KConstants
