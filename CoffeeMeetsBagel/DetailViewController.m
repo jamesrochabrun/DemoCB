@@ -215,7 +215,7 @@
     frame.origin.x = CGRectGetMaxX(_avatarView.frame);
     frame.origin.y = CGRectGetMinY(_bioTextView.frame) - innerVerticalSpace - frame.size.height;
     _detailView.frame = frame;
-        
+    
     frame = _likeButton.frame;
     frame.size.height = (IS_IPHONE)? kGeomLikeButtonHeight:kGeomLikeButtonHeightIpad;
     frame.size.width = width(_avatarView) * 0.6;
