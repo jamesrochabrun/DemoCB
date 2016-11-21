@@ -194,7 +194,7 @@
     [coreDataStack saveContext];
     
     __weak DetailViewController *weakSelf = self;
-    UIAlertController *alertSaved = [UIAlertController alertControllerWithTitle:@"test" message:@"test" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertSaved = [UIAlertController alertControllerWithTitle:@"Team member added to favorites" message:@"You can see the list of your favorites in the favorite section!" preferredStyle:UIAlertControllerStyleAlert];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [weakSelf presentViewController:alertSaved animated:YES completion:nil];

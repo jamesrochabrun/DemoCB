@@ -191,7 +191,6 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     CBTeamMember *teamMember = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSLog(@"the name is %@", teamMember.firstName);
     [self showExpandedProfile:teamMember];
 }
 

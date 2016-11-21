@@ -41,8 +41,6 @@
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
         [tap setNumberOfTapsRequired:1];
-        
-        //Adding gesture recognizer
         [_avatarImageview addGestureRecognizer:tap];
         
         _likeIndicatorImageView = [UIImageView new];

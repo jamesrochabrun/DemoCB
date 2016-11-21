@@ -28,13 +28,11 @@
     _scrollView.bouncesZoom = YES;
     _scrollView.delegate = self;
     _scrollView.backgroundColor = [UIColor blackColor];
-    //_scrollView.clipsToBounds = YES;
     _scrollView.showsVerticalScrollIndicator = NO;
     _scrollView.showsHorizontalScrollIndicator = NO;
-    float minimumScale = 1.0;//This is the minimum scale, set it to whatever you want. 1.0 = default
     _scrollView.maximumZoomScale = 3.0;
-    _scrollView.minimumZoomScale = minimumScale;
-    _scrollView.zoomScale = minimumScale;
+    _scrollView.minimumZoomScale = 1.0;
+    _scrollView.zoomScale = 1.0;
     [_scrollView setContentMode:UIViewContentModeScaleAspectFit];
     _scrollView.decelerationRate = UIScrollViewDecelerationRateFast;
     [self.view addSubview:_scrollView];
@@ -43,7 +41,6 @@
     _avatarImageView.contentMode = UIViewContentModeScaleAspectFill;
     _avatarImageView.clipsToBounds = YES;
     _avatarImageView.userInteractionEnabled = YES;
-    _avatarImageView.autoresizingMask = ( UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin);
     [_scrollView addSubview:_avatarImageView];
     
     UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
@@ -141,7 +138,6 @@
             _avatarImageView.alpha = 0;
             _dismissButton.alpha = 0;
 
-            
         } completion:^(BOOL finished) {
             [self dismissViewControllerAnimated:YES completion:nil];
         }];
@@ -153,42 +149,42 @@
 }
 
 - (void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer {
-    float newScale = [_scrollView zoomScale] * 1.3;//ZOOM_STEP;
     
-
+    float newScale = [_scrollView zoomScale] * 1.3;
     if (newScale > self.scrollView.maximumZoomScale){
         newScale = self.scrollView.minimumZoomScale;
         CGRect zoomRect = [self zoomRectForScale:newScale withCenter:[gestureRecognizer locationInView:gestureRecognizer.view]];
-        
         [_scrollView zoomToRect:zoomRect animated:YES];
     }
-    else{    // zoom in
+    else{// zoom in
 
         newScale = self.scrollView.maximumZoomScale;
         CGRect zoomRect = [self zoomRectForScale:newScale withCenter:[gestureRecognizer locationInView:gestureRecognizer.view]];
         [_scrollView zoomToRect:zoomRect animated:YES];
+
     }
 }
 
 - (CGRect)zoomRectForScale:(float)scale withCenter:(CGPoint)center {
     
     CGRect zoomRect;
-    
-    // the zoom rect is in the content view's coordinates.
-    //    At a zoom scale of 1.0, it would be the size of the imageScrollView's bounds.
-    //    As the zoom scale decreases, so more content is visible, the size of the rect grows.
     zoomRect.size.height = [_scrollView frame].size.height / scale;
     zoomRect.size.width  = [_scrollView frame].size.width  / scale;
     
-    // choose an origin so as to get the right center.
     zoomRect.origin.x = center.x - (zoomRect.size.width  / 2.0);
-    zoomRect.origin.y = _scrollView.frame.origin.y;//center.y - (zoomRect.size.height / 2.0);
+    zoomRect.origin.y = center.y - (zoomRect.size.height / 2.0);
+    
     return zoomRect;
 }
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
     return _avatarImageView;
 }
+
+
+
+
+
 
 
 @end
