@@ -25,7 +25,7 @@
         _imageView.image = [UIImage imageNamed:@"CBLogo.png"];
         [self addSubview:_imageView];
         
-        _label = [UILabel labelWithText:@"No favorites selected" withFont:[UIFont lightFont:kGeomH2Size] inView:self]
+        _label = [UILabel labelWithText:@"No favorites selected" withFont:[UIFont lightFont:kGeomH1Size] inView:self]
         ;
         [self addSubview:_label];
     }

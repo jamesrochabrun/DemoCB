@@ -148,7 +148,7 @@
     frame.size.height = kGeomFooterHeight;
     frame.size.width = width(self.view);
     frame.origin.x = 0;
-    frame.origin.y = CGRectGetMaxY(_bioTextView.frame) + kGeomPaddingBig;
+    frame.origin.y = CGRectGetMaxY(_bioTextView.frame) + ((IS_IPHONE)? kGeomPaddingBig:kGeomPaddingIpad);
     _footerView.frame = frame;
     
     _scrollView.contentSize = CGSizeMake(width(self.view), CGRectGetMaxY(_footerView.frame) + kGeomPaddingBig);
