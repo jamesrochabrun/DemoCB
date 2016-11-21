@@ -127,7 +127,7 @@
     _scrollView.frame = frame;
     
     if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
-        [self changeUIOnLandscape];
+            [self changeUIOnLandscape];
         return;
     }
     

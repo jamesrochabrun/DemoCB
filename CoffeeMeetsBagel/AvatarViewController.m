@@ -26,15 +26,10 @@
     
     _scrollView = [UIScrollView new];
     _scrollView.bouncesZoom = YES;
-    _scrollView.delegate = self;
     _scrollView.backgroundColor = [UIColor blackColor];
     _scrollView.showsVerticalScrollIndicator = NO;
     _scrollView.showsHorizontalScrollIndicator = NO;
-    _scrollView.maximumZoomScale = 3.0;
-    _scrollView.minimumZoomScale = 1.0;
-    _scrollView.zoomScale = 1.0;
     [_scrollView setContentMode:UIViewContentModeScaleAspectFit];
-    _scrollView.decelerationRate = UIScrollViewDecelerationRateFast;
     [self.view addSubview:_scrollView];
     
     _avatarImageView = [UIImageView new];
@@ -42,11 +37,6 @@
     _avatarImageView.clipsToBounds = YES;
     _avatarImageView.userInteractionEnabled = YES;
     [_scrollView addSubview:_avatarImageView];
-    
-    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
-    
-    [doubleTap setNumberOfTapsRequired:2];
-    [_avatarImageView addGestureRecognizer:doubleTap];
     
     UISwipeGestureRecognizer *swipeGestureUP = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
     swipeGestureUP.direction = UISwipeGestureRecognizerDirectionUp;
@@ -146,39 +136,6 @@
 
 - (void)dismissView {
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer {
-    
-    float newScale = [_scrollView zoomScale] * 1.3;
-    if (newScale > self.scrollView.maximumZoomScale){
-        newScale = self.scrollView.minimumZoomScale;
-        CGRect zoomRect = [self zoomRectForScale:newScale withCenter:[gestureRecognizer locationInView:gestureRecognizer.view]];
-        [_scrollView zoomToRect:zoomRect animated:YES];
-    }
-    else{// zoom in
-
-        newScale = self.scrollView.maximumZoomScale;
-        CGRect zoomRect = [self zoomRectForScale:newScale withCenter:[gestureRecognizer locationInView:gestureRecognizer.view]];
-        [_scrollView zoomToRect:zoomRect animated:YES];
-
-    }
-}
-
-- (CGRect)zoomRectForScale:(float)scale withCenter:(CGPoint)center {
-    
-    CGRect zoomRect;
-    zoomRect.size.height = [_scrollView frame].size.height / scale;
-    zoomRect.size.width  = [_scrollView frame].size.width  / scale;
-    
-    zoomRect.origin.x = center.x - (zoomRect.size.width  / 2.0);
-    zoomRect.origin.y = center.y - (zoomRect.size.height / 2.0);
-    
-    return zoomRect;
-}
-
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
-    return _avatarImageView;
 }
 
 

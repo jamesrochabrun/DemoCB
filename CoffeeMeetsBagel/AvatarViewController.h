@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class CBTeamMember;
-@interface AvatarViewController : UIViewController<UIScrollViewDelegate>
+@interface AvatarViewController : UIViewController
 @property (nonatomic, strong) CBTeamMember *teamMember;
 
 @end
